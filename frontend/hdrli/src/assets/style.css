@@ -1,0 +1,924 @@
+/* navigation menu */
+*{
+    font-family:"sans-serif";
+}
+.navigationmenu{
+   position:fixed;
+   background-color:#FCF2EA;
+   z-index:2;
+   width: 100vw;
+   height: 100vh;
+   top: 0;
+   left: 0;
+}
+.navigationmenu ul{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style-type:none;
+  padding: 5px 10px;
+  align-items: flex-start;
+}
+.navigationmenulinks a{
+    text-decoration:none;
+    color: black;
+}
+
+.navigationmenutitle{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+.navigationmenutitle span{
+  cursor: pointer;
+  
+}
+.navigationmenutitle span:hover,.resetpasswordinput button:hover{
+    transform:scale(1.05);
+}
+.navmenubtn{
+    display: flex;
+    justify-content: center;
+    padding-top: 15vh;
+}
+.navmenubtn button{
+    width: 80vw;
+    height: 52px;
+    background-color:#46583C;
+    color: white;
+    border-radius:20px;
+    cursor:pointer;
+}
+.maincontainer{
+    position:relative;
+    z-index: 1;
+}
+/* home */
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav h1{
+    color:#46583C;
+    cursor:pointer;
+}
+.nav h2>img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+}
+.nav span{
+    cursor:pointer;
+}
+.nav ul{
+    display: none;
+}
+.navbtn{
+    display:none;
+}
+.nav a{
+    text-decoration:none;
+    color: black;
+}
+.navperson{
+    display: none;
+}
+.isLink{
+    border-bottom:2px solid black;
+}
+.presentation,.pricingpresentation{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+.presentationbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    gap:10px;
+}
+.presentationbtn button{
+    width:300px;
+    height: 52px;
+    border-radius:20px;
+    background-color:#F6ECE5;
+    color: black;
+    cursor:pointer;
+}
+.presentationbtn button:nth-child(1){
+    background-color:#46583C;
+    color: white;
+}
+.presentationbtn button:nth-child(1):hover,.navmenubtn button:hover{
+    transform:scale(1.05);
+}
+.presentationbtn button:nth-child(2):hover{
+    background-color: #efded2;
+}
+.audiovisual{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    gap: 5px;
+    
+}
+.audiovisual audio,.audiovisual canvas{
+    height:52px;
+    border-radius:20px;
+}
+.howitworks{
+    display: flex;
+    text-align:center;
+    flex-direction: column;
+    background-color: #FCF2EA;
+    border-radius: 20px;
+    gap: 10px;
+    
+}
+.howtocontent{
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+    background-color:#FFF8F4;
+    padding: 10px 20px;
+    border-radius:24px;
+}
+.howtocontentprompt{
+    display: flex;
+    background-color:#EBE1DA;
+    padding: 5px 10px;
+    border-radius: 48px;
+
+}
+.quote{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+footer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #FCF2EA;
+}
+.footerlinks{
+    display: flex;
+    justify-content: space-between;
+}
+.footerlinks a{
+    text-decoration:none;
+    color: black;
+}
+/* pricing */
+.plans{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.plan1{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    background-color:#FCF2EA;
+    border: 1px solid transparent;
+    border-radius:32px;
+    padding:10px 20px;
+}
+.plan1 ul{
+    list-style-type: none;
+}
+.plan1 ul>li{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.plan1 button{
+    background-color:#EBE1DA;
+    border-radius:20px;
+    height: 44px;
+    cursor:pointer;
+}
+#plansjoinnowbtn{
+    background-color: #46583C;
+    color: white;
+}
+.plan1 button:hover{
+    transform:scale(1.05);
+    background-color: #eaf5ef;
+}
+#plansjoinnowbtn:hover{
+    background-color: #6a855b;
+}
+.faq{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 5px 10px;
+}
+.question{
+    padding: 5px 10px;
+    background-color: #FFF8F4;
+    border-radius:32px;
+}
+.logintitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #FFF8F4;
+}
+/* login */
+.loginpictures{
+    display: none;
+}
+.loginbody{
+    background-color:#FFF8F4;
+}
+.logintitle h2{
+    color:#46583C;
+}
+.loginfooter{
+    display: flex;
+    background-color: #FFF8F4;
+    height: 80vh;
+}
+.loginfooter a{
+    color: black;
+}
+.loginform{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 20px;
+    background-color:white;
+    border-radius:24px;
+    margin-left: 5px;
+    margin-right:5px;
+   
+}
+.loginform input{
+    background-color: #F6ECE5;
+    width: 100%;
+    height:52px;
+}
+.loginform input:focus{
+    background-color: white;
+    outline:none;
+
+}
+.inputfield{
+    display: flex;
+    align-items: center;
+}
+.inputfield input{
+     border-left: none;
+     border-top-right-radius:48px;
+     border-bottom-right-radius:48px;
+}
+.inputfield span{
+    display: flex;
+    border-left:2px solid black;
+    border-top:2px solid black ;
+    border-bottom:2px solid black;
+    background-color:#F6ECE5;
+    height: 54px;
+    align-items: center;
+    border-top-left-radius:48px;
+    border-bottom-left-radius:48px;
+    color: #C4C8BD;
+    
+}
+.inputfield:has(input:focus) span{
+    background-color: white;
+}
+.passwordlabel{
+    display: flex;
+    justify-content: space-between;
+}
+.loginform button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #46583C;
+    color: white;
+    height: 52px;
+    border-radius: 48px;
+    cursor:pointer;
+}
+.loginform button:nth-of-type(2){
+    display: flex;
+    gap: 5px;
+    background-color: #FCF2EA;
+    color: black;
+}
+.loginform button:nth-of-type(2) img{
+    width: 20px;
+    height: 20px;
+}
+.loginform button:nth-of-type(1):hover{
+    transform:scale(1.05);
+}
+.loginform button:nth-of-type(2):hover{
+    background-color: #f9e4d4;
+}
+/* speech-to-text*/
+.texttospeechmain{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.balance{
+    display: flex;
+    align-items: center;
+    background-color:#FCF2EA;
+    padding: 5px 10px;
+    border-radius:48px;
+}
+#chars{
+    color:#8C4E37;
+}
+.voice{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    background-color:#F6ECE5;
+    padding: 5px 10px;
+    border-radius:48px;
+    cursor:pointer;
+}
+.voice:hover{
+    background-color:#efded2;
+
+}
+.selectvoices{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color:#FCF2EA;
+    border-top-left-radius: 27px;
+    border-top-right-radius: 27px;
+    padding: 5px 10px;
+}
+.selectvoicesexit{
+    display:flex;
+    justify-content: center;
+    cursor:pointer;
+}
+.selectvoicestitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+.selectvoicestitle span{
+    cursor:pointer;
+}
+.selectedvoice{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fdfaf8;
+    border-radius:48px;
+    padding:5px 10px;
+}
+.selectedvoice:hover{
+    background-color: #f7ece4;
+}
+.prompt{
+    display: flex;
+    flex-direction:column;
+    gap: 20px;
+}
+.promptdarijasetting{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.promptresult{
+    display:flex;
+    justify-content:space-between;
+}
+.promptresult a{
+    text-decoration:none;
+    color: white;
+}
+.promptresult a>button{
+    display: flex;
+    align-items: center;
+    background-color: #46583C;
+    color: white;
+    padding: 5px 10px;
+    border-radius:48px;
+    cursor: pointer;
+}
+.prompt textarea{
+   background-color:#FCF2EA;
+   width: 80%;
+   height: 20vh;
+   border-radius: 48px;
+   padding: 24px;
+}
+.promptbtn{
+    display: flex;
+    gap: 10px;
+}
+.promptbtn button{
+    display: flex;
+    align-items: center;
+    background-color:#46583C;
+    color: white;
+    border-radius:48px;
+    padding: 5px 10px;
+    cursor:pointer;
+}
+.promptresult{
+    display: flex;
+    flex-direction:column;
+    gap: 5px;
+}
+.promptbtn button:hover,.promptresult a>button:hover{
+    transform:scale(1.05);
+}
+.selectedvoice{
+    cursor:pointer;
+    padding:10px 20px;
+    overflow-y:auto;
+}
+.texttospeechparent{
+    display: flex;
+    flex-direction:column;
+    gap:5px;
+    position:relative;
+}
+.texttospeechchild{
+    position:absolute;
+    padding-top: 10px;
+    left: 0;
+    width: 100%;
+}
+.isvoice{
+    background-color: #91aa83;
+}
+.isvoice:hover{
+    background-color: #91aa83;
+}
+/* forgot password */
+ .resetpasswordmain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:#FFF8F4;
+    padding: 5px 10px;
+    border-radius: 24px;
+    height:100vh;
+
+ }
+.resetpasswordimg{
+    display: none;
+}
+.resetpasswordinput{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:white;
+    padding: 10px 20px;
+    gap: 20px;
+    border-radius:48px;
+}
+.resetpasswordinput input{
+    display: flex;
+    width: 100%;
+    height: 52px;
+    background-color:#FCF2EA;
+}
+.resetpasswordinput button{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    height:52px;
+    cursor:pointer;
+    border-radius:48px;
+    background-color:#46583C;
+    color:white;
+}
+.resetpasswordinput a{
+    display: flex;
+    align-items: center;
+    color: #8C4E37;
+    text-decoration: none;
+}
+.resetpasswordinput a:hover{
+    color:#bc7054
+}
+/* reset password */
+.changepasswordmain{
+    background-color:#FFF8F4;
+    height:100vh;
+    padding: 5px 10px;
+}
+.changepasswordmain h2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+}
+.changepasswordform{
+    display:flex;
+    flex-direction:column;
+    gap: 20px;
+}
+.changepasswordform input{
+    height: 52px;
+    width: 100%;
+    border-left: none;
+    background-color:#F6ECE5;
+    border-top-right-radius: 32px;
+    border-bottom-right-radius:32px;
+}
+.changepasswordinput{
+    display: flex;
+    align-items: center;
+}
+.changepasswordinput span{
+    display: flex;
+    align-items: center;
+    border:2px solid black;
+    border-right:none;
+    height: 54px;
+    background-color:#F6ECE5;
+    border-top-left-radius:32px;
+    border-bottom-left-radius:32px;
+}
+.changepasswordform button{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color:#46583C;
+    color:white;
+    border-radius: 32px;
+    height: 54px;
+    cursor:pointer;
+}
+.changepasswordform a{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    gap: 5px;
+    color: #74786F;
+    text-decoration:none;
+    padding: 5px 10px;
+}
+.changepasswordform button:hover{
+    transform:scale(1.05);
+}
+/* terms */
+.termscontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.terms{
+    max-width:800px;
+
+}
+
+
+@media (min-width:481px) and (max-width:768px){
+
+}
+@media (min-width:769px) and (max-width:1024px){
+     .plans{
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+    }
+    /* login */
+     .loginbody{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+    .loginpictures{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+    .loginformcontainer{
+        display: flex;
+        justify-content: center;
+    }
+    .loginform{
+        height: 70vh;
+    }
+    .loginform input{
+        width: 30vw;
+    }
+    /* text-to-speech */
+      .balance{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: white;
+    }
+    #chars{
+        color: #8C4E37;
+    }
+    .texttospeechcontainer{
+        display:flex;
+        justify-content: center;
+        gap: 20px;
+
+    }
+    .texttospeechparent{
+        width: 60vw;
+        
+    }
+    .voice{
+        display: none;
+    }
+    .texttospeechchild{
+        position:relative;
+        width: 35vw;
+    }
+    .selectvoicesexit{
+        display: none;
+    }
+    .selectvoicestitle span{
+        display:none;
+    }
+    .prompt{
+        border: 1px solid #F6ECE5;
+        border-radius: 24px;
+        padding: 5px 10px;
+        gap: 20px;
+    }
+    .promptbtn{
+        justify-content: space-between;
+    }
+     /* reset-password */
+    .resetpasswordmain{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background-color:#FFF8F4;
+    
+    }
+    .resetpasswordimg{
+        display:flex;
+        width: 40vw;
+    }
+    .resetpasswordimg img{
+        border-radius:48px;
+    }
+    @keyframes graphanim{
+        0% {transform:translateX(0px)}
+        25% {transform:translateX(5px)}
+        50% {transform:translateX(-5px)}
+        75% {transform:translateX(5px)}
+        100% {transform:translateX(0px)}
+    }
+    .graphanim{
+        display: inline-block;
+        animation: graphanim 0.5s ease-in-out infinite;
+    }
+     /* change password */
+   .changepasswordmain{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+   }
+   .changepasswordhero{
+    background-color: white;
+    padding: 5px 10px;
+    width: 40vw;
+    border-radius:32px;
+   }
+   
+
+    
+    
+
+}
+@media (min-width:1025px){
+   .nav{
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    }
+   .nav span{
+    display:none;
+   }
+   .nav ul{
+    display: flex;
+    list-style-type:none;
+    justify-content: center;
+    flex: 1;
+    gap: 30px;
+    }
+    .nav li{
+        cursor:pointer;
+    }
+    .nav li:hover,.footerlinks a>p:hover{
+        transform:scale(1.15);
+        background-color: #ececec;
+        border-radius: 5px;
+    }
+    .navbtn{
+        display: flex;
+        gap: 10px;
+    }
+    .nav button:nth-of-type(1){
+        border: none;
+        background-color:white;
+        cursor:pointer;
+    }
+    .nav button:nth-of-type(2){
+        background-color: #46583C;
+        color: white;
+        width: 109px;
+        height: 36px;
+        border-radius:20px;
+        cursor:pointer;
+    }
+    .nav button:nth-of-type(2):hover{
+        transform:scale(1.10);
+    }
+    .navperson{
+        display: flex;
+        gap: 5px;
+    }
+    .presentation{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 20vw;
+        padding: 5px 10px;
+        
+    }
+    .presentation p{
+        max-width: 60ch;
+    }
+    .presentation audio{
+        width: 30vw;
+    }
+    .presentation canvas{
+        width: 30vw;
+    }
+    .presentationbtn{
+        display:flex;
+        flex-direction: row;
+    }
+    .presentationbtn button:nth-child(1){
+        width: 168.59px;
+        height: 56px;
+    }
+    .presentationbtn button:nth-child(1):hover{
+        transform:scale(1.05);
+    }
+    .presentationbtn button:nth-child(2){
+        width: 209.9px;
+        height: 56px; 
+    }
+    .presentationbtn button:nth-child(2):hover{
+        transform:scale(1.05);
+    }
+    main{
+        display: flex;
+        flex-direction: column;
+        gap: 10vh;
+    }
+    .howtocontainer{
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 10px;
+        padding: 10px 20px;
+    }
+    .footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 20px 5px 20px;
+    }
+    .footerlinks{
+        gap: 20px;
+    }
+    /* pricing */
+    .pricingpresentation p{
+        max-width:80ch;
+        margin: 0 auto;
+    }
+    .plans{
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+    }
+    .question{
+        width: 50vw;
+        margin: 0 auto;
+    }
+    /* login */
+    .loginbody{
+        display: flex;
+        flex-direction: row;
+        
+    }
+    .loginpictures{
+        display: flex;
+        flex-direction: column;
+        width: 40vw;
+    }
+    .loginformcontainer{
+        display: flex;
+        justify-content: center;
+    }
+    .loginform input{
+        width: 30vw;
+    }
+    /* text-to-speech */
+    .balance{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: white;
+    }
+    #chars{
+        color: #8C4E37;
+    }
+    .texttospeechcontainer{
+        display:flex;
+        justify-content: center;
+        gap: 20px;
+
+    }
+    .texttospeechparent{
+        width: 50vw;
+        
+    }
+    .voice{
+        display: none;
+    }
+    .texttospeechchild{
+        position:relative;
+        width: 25vw;
+    }
+    .selectvoicesexit{
+        display: none;
+    }
+   
+    .selectvoicestitle span{
+        display:none;
+    }
+    .prompt{
+        border: 1px solid #F6ECE5;
+        border-radius: 24px;
+        padding: 5px 10px;
+        gap: 20px;
+    }
+    .promptbtn{
+        justify-content: space-between;
+    }
+        /* reset-password */
+    .resetpasswordmain{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    .resetpasswordimg{
+        display:flex;
+        width: 40vw;
+    }
+    .resetpasswordimg img{
+        border-radius:48px;
+    }
+    /* change password */
+   .changepasswordmain{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+   }
+   .changepasswordhero{
+    background-color: white;
+    padding: 5px 10px;
+    width: 40vw;
+    border-radius:32px;
+   }
+   
+    
+    
+
+   
+}
