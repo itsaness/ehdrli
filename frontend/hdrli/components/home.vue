@@ -91,7 +91,7 @@ let handleSignout=async()=>
         </div>
         </div>
          <article class="audiovisual">
-        <av-line  :line-width="2" line-color="lime" src="../public/ehdrli.mp3" download></av-line>
+        <av-line  :line-width="2" line-color="lime" src="/ehdrli.mp3" download></av-line>
      </article>
     </article>
      <article class="howitworks">
@@ -109,7 +109,7 @@ let handleSignout=async()=>
           <span class="material-symbols-outlined">wand_stars</span>
         <h2>Generate & Download</h2>
         <p>Click generate and let our advanced AI engine process your text in seconds. Preview the audio stream instantly, then download your studio-quality MP3 file ready for use.</p>
-        <av-line  :line-width="2" line-color="lime" src="../public/ehdrli.mp3"></av-line>
+        <av-line  :line-width="2" line-color="lime" src="/ehdrli.mp3"></av-line>
         </article>
         </div>
         

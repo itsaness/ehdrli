@@ -72,7 +72,7 @@ let handleSocialSignUp=async()=>{
            <label for="email">Email address</label>
            <div class="inputfield">
                 <span class="material-symbols-outlined">mail</span>
-                <input type="text" name="email"  placeholder="hello@example.com" v-model="email">
+                <input type="text" name="email"  placeholder="hello@example.com" v-model="email" required>
             </div> 
             <div class="passwordlabel">
                <label for="password">Password</label> 
@@ -80,7 +80,7 @@ let handleSocialSignUp=async()=>{
             </div>
             <div class="inputfield">
                 <span class="material-symbols-outlined">lock</span>
-            <input type="password" name="password" placeholder="••••••••" v-model="password">
+            <input type="password" name="password" placeholder="••••••••" v-model="password" required>
             </div>
             <button type="submit">Sign in <span class="material-symbols-outlined">arrow_forward</span></button>
             <p>OR CONTINUE WITH</p>
