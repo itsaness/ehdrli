@@ -609,6 +609,7 @@ footer{
     justify-content: center;
     background-color: #FEAE91;
     border-radius: 48px;
+    padding: 5px 10px;
 }
 .emailverificationnotice p{
     color: #793F29;
