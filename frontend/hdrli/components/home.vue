@@ -7,7 +7,10 @@ let route = useRoute();
 let router = useRouter();
 const session = authClient.useSession();
 let name = computed(()=>session.value?.data?.user?.name);
+let email = computed(()=>session.value?.data?.user?.email);
 let isMenu=ref(false);
+let verificationEmailError=ref(null);
+let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
 let handleSignout=async()=>
 {
     try{
@@ -20,6 +23,21 @@ let handleSignout=async()=>
         console.error(err.message);
     }
 }
+let handleEmailVerification =async ()=>{
+    try{
+        let {data,error}=authClient.sendVerificationEmail({
+            email:email.value,
+            callbackURL:"/"
+        });
+        if(error){
+            return;
+        }
+    }catch(err){
+        verificationEmailError.value=err.message;
+    }
+
+}
+console.log(isEmailVerified.value);
 
 
 </script>
@@ -70,9 +88,9 @@ let handleSignout=async()=>
     <hr>
 </header>
 <main>
-    <div>
-
-    </div>
+    <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
+     <p>Please verify your email address to unlock all features.  <a href="/" @click="handleEmailVerification()">Resend Verification Link</a></p>
+    </article>
     <article class="presentation">
         <div>
           <h2>Next-Generation AI Voice Generation</h2>
@@ -127,6 +145,13 @@ let handleSignout=async()=>
             <RouterLink to="/terms"><p :class="{isLink:route.path=='/terms'}">Terms</p></RouterLink>
             <RouterLink to="/pricing"><p :class="{isLink:route.path=='/pricing'}">Pricing</p></RouterLink>
             <RouterLink to="/text-to-speech"><p :class="{isLink:route.path=='/text-to-speech'}">Text to speech</p></RouterLink>
+        </div>
+        <div class="footersocials">
+            <a href=""><img src="/instagram.svg" alt=""></a>
+            <a href=""><img src="/facebook.svg" alt=""></a>
+            <a href=""><img src="/x.svg" alt=""></a>
+            <a href=""><img src="/whatsapp.svg" alt=""></a>
+
         </div>
         <p>© 2026 hdrli. All rights reserved.</p>
     </footer>

@@ -163,12 +163,23 @@
 footer{
     display: flex;
     flex-direction: column;
-    text-align: center;
     background-color: #FCF2EA;
 }
 .footerlinks{
     display: flex;
     justify-content: space-between;
+}
+.footersocials{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    gap: 5px;
+}
+.footersocials img{
+    width: 24px;
+}
+.footersocials img:hover{
+    transform:scale(1.05);
 }
 .footerlinks a{
     text-decoration:none;
@@ -328,6 +339,7 @@ footer{
 .loginform button:nth-of-type(2):hover{
     background-color: #f9e4d4;
 }
+
 /* speech-to-text*/
 .texttospeechmain{
     display:flex;
@@ -349,7 +361,7 @@ footer{
     align-items:center;
     justify-content: space-between;
     background-color:#F6ECE5;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border-radius:48px;
     cursor:pointer;
 }
@@ -424,10 +436,11 @@ footer{
    height: 20vh;
    border-radius: 48px;
    padding: 24px;
+   resize:none;
 }
 .promptbtn{
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 .promptbtn button{
     display: flex;
@@ -460,6 +473,7 @@ footer{
 .texttospeechchild{
     position:absolute;
     padding-top: 10px;
+    top: 10vh;
     left: 0;
     width: 100%;
 }
@@ -589,6 +603,18 @@ footer{
     max-width:800px;
 
 }
+/* email verification notice */
+.emailverificationnotice{
+    display: flex;
+    justify-content: center;
+    background-color: #FEAE91;
+    border-radius: 48px;
+}
+.emailverificationnotice p{
+    color: #793F29;
+
+}
+
 
 
 @media (min-width:481px) and (max-width:768px){
@@ -614,9 +640,6 @@ footer{
     .loginformcontainer{
         display: flex;
         justify-content: center;
-    }
-    .loginform{
-        height: 70vh;
     }
     .loginform input{
         width: 30vw;
@@ -680,17 +703,7 @@ footer{
     .resetpasswordimg img{
         border-radius:48px;
     }
-    @keyframes graphanim{
-        0% {transform:translateX(0px)}
-        25% {transform:translateX(5px)}
-        50% {transform:translateX(-5px)}
-        75% {transform:translateX(5px)}
-        100% {transform:translateX(0px)}
-    }
-    .graphanim{
-        display: inline-block;
-        animation: graphanim 0.5s ease-in-out infinite;
-    }
+  
      /* change password */
    .changepasswordmain{
     display:flex;
@@ -839,13 +852,7 @@ footer{
         flex-direction: column;
         width: 40vw;
     }
-    .loginformcontainer{
-        display: flex;
-        justify-content: center;
-    }
-    .loginform input{
-        width: 30vw;
-    }
+   
     /* text-to-speech */
     .balance{
         display: flex;

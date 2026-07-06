@@ -7,7 +7,9 @@ import texttospeechView from "../views/texttospeechView.vue";
 import forgotpasswordView from "../views/forgotpasswordView.vue";
 import resetpasswordView from "../views/resetpasswordView.vue";
 import termsView from "../views/termsView.vue";
+import privacyView from "../views/privacyView.vue";
 import { authClient } from "@/auth-client.js";
+
 
 
 
@@ -20,7 +22,8 @@ const routes = [
     {path:"/text-to-speech",name:"texttospeech",component:texttospeechView},
     {path:"/forgot-password",name:"forgotpassword",component:forgotpasswordView,meta:{requiresGuest:true}},
     {path:"/reset-password",name:"resetpassword",component:resetpasswordView,meta:{requiresGuest:true}},
-    {path:"/terms",name:"terms",component:termsView}
+    {path:"/terms",name:"terms",component:termsView},
+    {path:"/privacy",name:"privacypolicy",component:privacyView}
 
 
 ]

@@ -7,7 +7,7 @@ export const toDarija = async (text)=>{
     try{
        const message = await client.messages.create({
         max_tokens:2048,
-        messages:[{content:`You are an expert in Algerian Darija. The user will give you Algerian Darija text written in Latin script (Franco-Arabic), Arabic script, or a mix of both, possibly containing French words.
+        system:`You are an expert in Algerian Darija. The user will give you Algerian Darija text written in Latin script (Franco-Arabic), Arabic script, or a mix of both, possibly containing French words.
 
 Your job is to convert it into Arabic script while:
 - Keeping it as Darija (do NOT translate to MSA/فصحى)
@@ -15,7 +15,8 @@ Your job is to convert it into Arabic script while:
 - Numbers used as letters: 3=ع, 7=ح, 9=ق, 2=ء, 8=غ (e.g. "3lash" → "علاش", "9ahwa" → "قهوة")
 - Return ONLY the Arabic script text, nothing else
 
-Text: ${text}`,role:"user"}],
+Text: `,
+        messages:[{content:text,role:"user"}],
        model:"claude-haiku-4-5"
     }) 
     return message.content[0].text;

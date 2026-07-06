@@ -8,6 +8,11 @@ let name = computed(()=>session?.value.data?.user?.name);
 let route = useRoute();
 let isMenu=ref(false);
 let plans=ref([]);
+let email = computed(()=>session.value?.data?.user?.email);
+let verificationEmailError=ref(null);
+let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
+
+
 const getPlans = async()=>{
     try{
         let response = await fetch("https://api.dzoin.com/api/plans");
@@ -55,6 +60,20 @@ let handleSignout=async()=>
     }catch(err){
         console.error(err.message);
     }
+}
+let handleEmailVerification =async ()=>{
+    try{
+        let {data,error}=authClient.sendVerificationEmail({
+            email:email.value,
+            callbackURL:"/"
+        });
+        if(error){
+            return;
+        }
+    }catch(err){
+        verificationEmailError.value=err.message;
+    }
+
 }
 getPlans();
 
@@ -104,6 +123,9 @@ getPlans();
     <hr>
 </header>
 <main>
+   <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
+     <p>Please verify your email address to unlock all features.  <a href="/" @click="handleEmailVerification()">Resend Verification Link</a></p>
+    </article>
     <article class="pricingpresentation">
         <h2>Simple pricing that scales with your needs</h2>
         <p>Start generating lifelike audio immediately and upgrade only when you need more power. We believe in straightforward, transparent pricing with no hidden fees—just choose the character limit that fits your monthly production, whether you are a solo creator or a growing business.</p>

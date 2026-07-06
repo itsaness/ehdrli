@@ -1,9 +1,26 @@
 <script setup>
+import { ref,computed } from 'vue';
 import { useRoute,useRouter } from 'vue-router';
 import { authClient } from '@/auth-client';
 let route = useRoute();
 let router = useRouter();
 const session =  authClient.useSession();
+let email = computed(()=>session.value?.data?.user?.email);
+let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
+let handleEmailVerification =async ()=>{
+    try{
+        let {data,error}=authClient.sendVerificationEmail({
+            email:email.value,
+            callbackURL:"/"
+        });
+        if(error){
+            return;
+        }
+    }catch(err){
+        verificationEmailError.value=err.message;
+    }
+
+}
 </script>
 <template>
     <header>
@@ -30,6 +47,9 @@ const session =  authClient.useSession();
     <hr>
 </header>
 <main class="termscontainer">
+    <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
+     <p>Please verify your email address to unlock all features.  <a href="/" @click="handleEmailVerification()">Resend Verification Link</a></p>
+    </article>
     <article class="terms">
         <h2>Terms of Service for dzoin</h2>
         <p><b>Effective Date:</b> July 5, 2026</p>

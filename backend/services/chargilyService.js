@@ -16,8 +16,8 @@ export const generateCheckout = async (amount,planId,userId)=>{
   body: JSON.stringify({
     amount: amount,
     currency: 'dzd',
-    success_url: 'http://localhost:5173/text-to-speech',
-    failure_url:'http://localhost:5173/pricing',
+    success_url: 'https://dzoin.com/text-to-speech',
+    failure_url:'https://dzoin.com/pricing',
     metadata:
         {
            userId,

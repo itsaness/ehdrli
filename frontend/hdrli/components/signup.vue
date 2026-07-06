@@ -81,7 +81,7 @@ let handleSocialSignUp=async()=>{
             <img src="../public/front.jpg" alt="">
 
         </div>
-        <div>
+        <div class="loginpresentation">
 <article class="logintitle">
         <h2>Dzoin</h2>
         <p>Create your account join us today and start transforming your text into studio-quality voiceovers.</p>

@@ -1,8 +1,9 @@
 <script setup>
-import { ref,computed,watch } from 'vue';
+import { ref,computed,watch,inject } from 'vue';
 import { useRoute } from 'vue-router';
 import { authClient } from '@/auth-client';
 import { useMediaQuery } from '@vueuse/core';
+import { useLoading } from 'vue-loading-overlay';
 import  VueToggles  from "vue-toggles";
 let characters = ref([]);
 let route = useRoute();
@@ -18,7 +19,11 @@ let isExitVoices=ref(true);
 let isMenu=ref(false);
 let isLoading = ref(false);
 let isLatinDarija = ref(false);
+const $loading = inject("$loading");
+const fullPage = ref(true);
 const isLargeScreen = useMediaQuery('(min-width:769px)');
+let email = computed(()=>session.value?.data?.user?.email);
+let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
 let getCharacters = async ()=>{
     let options = {
         method:"GET",
@@ -67,6 +72,16 @@ let generateAudio = async()=>{
         },
         body:JSON.stringify({text:script.value,voiceId:selectedVoiceId.value,isLatinDarija:isLatinDarija.value})
     }
+      const loader = $loading.show({
+        canCancel:false,
+        isFullPage:true,
+        transition:"fade",
+        loader:"dots",
+        backgroundColor:"#fff",
+        opacity:0.5,
+
+        
+    });
     isLoading.value=true;
     try{
     let response = await fetch("https://api.dzoin.com/api/voices",options);
@@ -80,6 +95,7 @@ let generateAudio = async()=>{
     }catch(err){
         console.error(err.message);
     }finally{
+        loader.hide();
         isLoading.value=false;
     }
 }
@@ -105,6 +121,20 @@ let handleSignout=async()=>
     }catch(err){
         console.error(err.message);
     }
+}
+let handleEmailVerification =async ()=>{
+    try{
+        let {data,error}=authClient.sendVerificationEmail({
+            email:email.value,
+            callbackURL:"/"
+        });
+        if(error){
+            return;
+        }
+    }catch(err){
+        verificationEmailError.value=err.message;
+    }
+
 }
 
 watch(isLargeScreen,(isLarge)=>{
@@ -134,10 +164,7 @@ getVoices();
         </div>
 
         </div>
-         <div class="navmenubtn">
-<button v-show="!session.data">Sign in</button>
-        <button v-show="session.data" @click="handleSignout()">Sign out</button>
-        </div>
+        
        
 
 
@@ -164,6 +191,9 @@ getVoices();
     <hr>
 </header>
     <main class="texttospeechmain">
+        <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
+     <p>Please verify your email address to unlock all features.  <a href="/" @click="handleEmailVerification()">Resend Verification Link</a></p>
+    </article>
         <article class="balance">
             <span id="chars" class="material-symbols-outlined">mode_heat</span><p>balance:<span id="chars"><b>{{characters.remaining}}</b> chars</span></p>
        </article>
@@ -190,7 +220,7 @@ getVoices();
         </div>
         <div class="promptbtn">
         <p>{{script.length}}/{{ 5000 }} characters</p>
-<button @click="generateAudio()"><span class="material-symbols-outlined">graphic_eq</span>Generate Speech</button>
+<button  @click="generateAudio()" :disabled="isLoading"><span class="material-symbols-outlined">graphic_eq</span>Generate Speech</button>
         </div>
         
      </article>
