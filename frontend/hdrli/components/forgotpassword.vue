@@ -15,7 +15,6 @@ let handleReset = async()=>{
     try{
         const{data,error}=await authClient.requestPasswordReset({
             email:email.value,
-            redirectTo:"https/dzoin.com/reset-password"
         })
         if(error){
             resetError.value=error.message;
@@ -41,6 +40,7 @@ let handleReset = async()=>{
         </div>
         <div>
        <form class="resetpasswordinput" @submit.prevent="handleReset()">
+        <p  style="color:green" v-if="resetSuccess!=null">{{ resetSuccess }}</p>
         <p v-if="resetError!=null" style="color:red">{{ resetError }}</p>
         <article class="resetpasswordhero">
         <h2>Forgot your password ?</h2>
@@ -48,7 +48,7 @@ let handleReset = async()=>{
        </article>
         <label for="email"></label>
         <input type="text" placeholder="    hello@example.com" v-model="email" required>
-        <button type="submit">Send Reset Link<span class="material-symbols-outlined">arrow_forward</span></button>
+        <button type="submit" v-if="resetSuccess!=null">Send Reset Link<span class="material-symbols-outlined">arrow_forward</span></button>
         <RouterLink to="/login"><span class="material-symbols-outlined">arrow_left_alt</span> Back to Sign in</RouterLink>
     </form>
         </div>
