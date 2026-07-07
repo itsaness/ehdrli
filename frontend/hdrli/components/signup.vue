@@ -54,7 +54,8 @@ let handleSocialSignUp=async()=>{
     isLoading.value=true;
     try{
         const {data,error}=await authClient.signIn.social({
-            provider:"google"
+            provider:"google",
+            callbackURL:window.location.origin + "/"
         });
         if(error){
             registerError.value=error.message;
