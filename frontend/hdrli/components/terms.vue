@@ -9,7 +9,7 @@ let email = computed(()=>session.value?.data?.user?.email);
 let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
 let handleEmailVerification =async ()=>{
     try{
-        let {data,error}=authClient.sendVerificationEmail({
+        let {data,error}=await authClient.sendVerificationEmail({
             email:email.value,
             callbackURL:"/"
         });

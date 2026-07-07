@@ -124,7 +124,7 @@ let handleSignout=async()=>
 }
 let handleEmailVerification =async ()=>{
     try{
-        let {data,error}=authClient.sendVerificationEmail({
+        let {data,error}=await authClient.sendVerificationEmail({
             email:email.value,
             callbackURL:"/"
         });
