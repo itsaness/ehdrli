@@ -42,7 +42,7 @@ let handleSignUp = async ()=>{
         router.push("/");
     }
     }catch(err){
-        registerError.value="A network error occured. Please try again later."
+        registerError.value="A network error occurred. Please try again later."
     }finally{
         isLoading.value=false;
     }

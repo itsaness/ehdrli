@@ -11,6 +11,7 @@ let email = computed(()=>session.value?.data?.user?.email);
 let isMenu=ref(false);
 let verificationEmailError=ref(null);
 let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
+let verificationEmailSuccess=ref(null);
 let handleSignout=async()=>
 {
     try{
@@ -24,20 +25,24 @@ let handleSignout=async()=>
     }
 }
 let handleEmailVerification =async ()=>{
+    verificationEmailError.value=null;
+    verificationEmailSuccess.value=null;
     try{
         let {data,error}=await authClient.sendVerificationEmail({
             email:email.value,
             callbackURL:window.location.origin+"/"
         });
         if(error){
+            verifyEmailError.value=error.message;
             return;
         }
+        verificationEmailSuccess.value=`Verification email sent to ${email.value}`
     }catch(err){
-        verificationEmailError.value=err.message;
+        verificationEmailError.value="A network error occurred. Please try again later.";
     }
 
 }
-console.log(isEmailVerified.value);
+
 
 
 </script>
@@ -89,7 +94,10 @@ console.log(isEmailVerified.value);
 </header>
 <main>
     <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
-     <p>Please verify your email address to unlock all features.  <a href="/" @click="handleEmailVerification()">Resend Verification Link</a></p>
+    <p  style="color: green;" v-if="verificationEmailSuccess!=null">{{ verificationEmailSuccess }}</p>
+    <p style="color:red;" v-else-if="verificationEmailError!=null">{{ verificationEmailError }} </p>
+    <p v-else>Please verify your email address to unlock all features.  <a href="#" @click.prevent="handleEmailVerification()">Resend Verification Link</a></p>
+
     </article>
     <article class="presentation">
         <div>

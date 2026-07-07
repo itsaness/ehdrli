@@ -62,7 +62,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
         from:"Dzoin Security <support@dzoin.com>",
         to:user.email,
         subject:"Verify your email",
-        html:`<p>Click the button bellow to verify your email for Dzoin</p>
+        html:`<p>Click the button below to verify your email for Dzoin</p>
               <a href="${url}">Click here</a>   
         `
       })

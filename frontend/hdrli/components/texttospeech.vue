@@ -24,6 +24,8 @@ const fullPage = ref(true);
 const isLargeScreen = useMediaQuery('(min-width:769px)');
 let email = computed(()=>session.value?.data?.user?.email);
 let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
+let verificationEmailError=ref(null);
+let verificationEmailSuccess=ref(null);
 let getCharacters = async ()=>{
     let options = {
         method:"GET",
@@ -123,17 +125,20 @@ let handleSignout=async()=>
     }
 }
 let handleEmailVerification =async ()=>{
+    verificationEmailError.value=null;
+    verificationEmailSuccess.value=null;
     try{
         let {data,error}=await authClient.sendVerificationEmail({
             email:email.value,
             callbackURL:window.location.origin+"/"
-
         });
         if(error){
+            verifyEmailError.value=error.message;
             return;
         }
+        verificationEmailSuccess.value=`Verification email sent to ${email.value}`
     }catch(err){
-        verificationEmailError.value=err.message;
+        verificationEmailError.value="A network error occurred. Please try again later.";
     }
 
 }
@@ -192,8 +197,11 @@ getVoices();
     <hr>
 </header>
     <main class="texttospeechmain">
-        <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
-     <p>Please verify your email address to unlock all features.  <a href="/" @click="handleEmailVerification()">Resend Verification Link</a></p>
+         <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
+    <p  style="color: green;" v-if="verificationEmailSuccess!=null">{{ verificationEmailSuccess }}</p>
+    <p style="color:red" v-else-if="verificationEmailError!=null">{{ verificationEmailError }} </p>
+    <p v-else>Please verify your email address to unlock all features.  <a href="#" @click.prevent="handleEmailVerification()">Resend Verification Link</a></p>
+
     </article>
         <article class="balance">
             <span id="chars" class="material-symbols-outlined">mode_heat</span><p>balance:<span id="chars"><b>{{characters.remaining}}</b> chars</span></p>

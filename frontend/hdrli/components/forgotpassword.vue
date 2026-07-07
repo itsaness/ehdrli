@@ -23,7 +23,7 @@ let handleReset = async()=>{
         }
         resetSuccess.value="Reset password link sent to your email."
     }catch(err){
-      resetError.value="A network error occured. Please try again later"
+      resetError.value="A network error occurred. Please try again later"
       return;
     }finally{
         isLoading.value=false;
