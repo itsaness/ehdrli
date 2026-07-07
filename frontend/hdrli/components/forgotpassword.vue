@@ -48,7 +48,7 @@ let handleReset = async()=>{
        </article>
         <label for="email"></label>
         <input type="text" placeholder="    hello@example.com" v-model="email" required>
-        <button type="submit" v-if="resetSuccess!=null">Send Reset Link<span class="material-symbols-outlined">arrow_forward</span></button>
+        <button type="submit" :disabled="resetSuccess!=null">Send Reset Link<span class="material-symbols-outlined">arrow_forward</span></button>
         <RouterLink to="/login"><span class="material-symbols-outlined">arrow_left_alt</span> Back to Sign in</RouterLink>
     </form>
         </div>
