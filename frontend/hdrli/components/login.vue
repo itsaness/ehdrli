@@ -77,7 +77,7 @@ let handleSocialSignUp=async()=>{
             </div> 
             <div class="passwordlabel">
                <label for="password">Password</label> 
-               <a href="">Forgot password ?</a>
+               <a href="/forgot-password">Forgot password ?</a>
             </div>
             <div class="inputfield">
                 <span class="material-symbols-outlined">lock</span>

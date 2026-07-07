@@ -103,7 +103,7 @@ let handleSocialSignUp=async()=>{
             <p v-if="emailError!=null" style="color:red">{{ emailError }}</p>
             <div class="passwordlabel">
                <label for="password">Password</label> 
-               <a href="">Forgot password ?</a>
+               <a href="/forgot-password">Forgot password ?</a>
             </div>
 
             <div class="inputfield">
