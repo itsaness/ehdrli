@@ -40,6 +40,7 @@ let handlePasswordReset=async()=>{
 
         }
         passwordSuccess.value="Password has been changed successfully.";
+        router.push("/login");
     }catch(err){
         passwordError.value="A network error occured. Please try again later."
     }finally{
