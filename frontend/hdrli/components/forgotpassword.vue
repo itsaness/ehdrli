@@ -15,7 +15,7 @@ let handleReset = async()=>{
     try{
         const{data,error}=await authClient.requestPasswordReset({
             email:email.value,
-            redirectTo:"https://dzoin.com/forgot-password"
+            redirectTo:"https://dzoin.com/reset-password"
         })
         if(error){
             resetError.value=error.message;
