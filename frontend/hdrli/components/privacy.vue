@@ -11,7 +11,8 @@ let handleEmailVerification =async ()=>{
     try{
         let {data,error}=await authClient.sendVerificationEmail({
             email:email.value,
-            callbackURL:"/"
+            callbackURL:window.location.origin+"/"
+
         });
         if(error){
             return;

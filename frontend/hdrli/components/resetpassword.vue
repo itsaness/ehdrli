@@ -11,7 +11,7 @@ let isLoading=ref();
 let passwordSuccess=ref(null);
 const token = route.query.token;
 let checkPassword=()=>{
-    if(newPassword.value<8 || !newPassword.value){
+    if(newPassword.value.length<8 || !newPassword.value){
         passwordError.value="Password must be atleast 8 characters long.";
         return;
     }
@@ -36,6 +36,7 @@ let handlePasswordReset=async()=>{
             })
             if(error){
             passwordError.value=error.message;
+            return;
             }
 
         }
@@ -47,6 +48,7 @@ let handlePasswordReset=async()=>{
         isLoading.value=false;
     }
 }
+
 
 
 </script>
@@ -61,15 +63,15 @@ let handlePasswordReset=async()=>{
                 <label for="password">New Password</label>
                 <div class="changepasswordinput">
                   <span class="material-symbols-outlined">lock</span>
-                  <input type="password" placeholder="••••••••" name="password" v-model="newPassword" required>  
+                  <input type="password" placeholder="••••••••" name="password" v-model="newPassword" @input="checkPassword()"    required>  
                 </div>
                 <label for="newpassword">Confirm New Password</label>
                 
                 <div class="changepasswordinput">
                <span class="material-symbols-outlined">lock</span>
-               <input type="password" placeholder="••••••••" name="newpassword" v-model="repeatedPassword" required>
+               <input type="password" placeholder="••••••••" name="newpassword" v-model="repeatedPassword" @input="checkPassword()" required>
                 </div>
-                <button type="submit">Set New Password</button>
+                <button type="submit" :disabled="passwordError!=null">Set New Password</button>
                 <RouterLink to="/login"><span class="material-symbols-outlined">arrow_left_alt</span> Back to Sign in</RouterLink>
                 </form>
         </article>

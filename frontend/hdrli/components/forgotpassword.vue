@@ -30,7 +30,6 @@ let handleReset = async()=>{
     }
 }
 
-
 </script>
 <template>
     <header>
