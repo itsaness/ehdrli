@@ -15,7 +15,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
     sendResetPassword:async({user,url,token},request)=>{
     try{
       const {data,error}=await resend.emails.send({
-        from:"eHdrli Security <support@ehdrli.com>",
+        from:"eHdrli Security <support@dzoin.com>",
         to:user.email,
         subject:"Reset your password",
         html:`<p>Click the button below to finalize your password change for Dzoin</p>
@@ -39,7 +39,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
     sendVerificationEmail:async({user,url,token},request)=>{
       try{
         const {data,error}=await resend.emails.send({
-        from:"eHdrli Security <support@ehdrli.com>",
+        from:"eHdrli Security <support@dzoin.com>",
         to:user.email,
         subject:"Verify your email",
         html:`<p>Click the button bellow to verify your email for Dzoin</p>
