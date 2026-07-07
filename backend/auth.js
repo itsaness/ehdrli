@@ -18,8 +18,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
         from:"eHdrli Security <support@ehdrli.com>",
         to:user.email,
         subject:"Reset your password",
-        html:`<p>Click the button bellow to finalize your passwod change for Dzoin</p>
-              <a :href="url">Click here</a>   
+        html:`<p>Click the button below to finalize your password change for Dzoin</p>
+              <a href="${url}">Click here</a>   
         `
       })
       if(error){
@@ -37,14 +37,24 @@ const resend = new Resend(process.env.RESEND_API_KEY);
   },
   emailVerification:{
     sendVerificationEmail:async({user,url,token},request)=>{
-      const {data,error}=await resend.emails.send({
+      try{
+        const {data,error}=await resend.emails.send({
         from:"eHdrli Security <support@ehdrli.com>",
         to:user.email,
         subject:"Verify your email",
         html:`<p>Click the button bellow to verify your email for Dzoin</p>
-              <a :href="url">Click here</a>   
+              <a href="${url}">Click here</a>   
         `
       })
+      if(error){
+        console.error(error.message);
+        throw new Error(error.message);
+      }
+      }catch(err){
+        console.error(err.message);
+        throw err;
+      }
+      
     }
   },
   socialProviders:{
