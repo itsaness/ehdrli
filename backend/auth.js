@@ -10,6 +10,26 @@ const resend = new Resend(process.env.RESEND_API_KEY);
   trustedOrigins:["http://localhost:3000","http://localhost:5173","https://api.dzoin.com","https://dzoin.com"],
   secret:process.env.BETTER_AUTH_SECRET,
   baseURL:process.env.BETTER_AUTH_URL,
+  rateLimit:{
+    window:60,
+    max:100,
+    customRules:{
+      
+      "/request-password-reset":{
+        window:60,
+        max:3
+      },
+      "/send-verification-email":{
+        window:60,
+        max:3
+      }
+    },
+    advanced:{
+      ipAddress:{
+        ipAddressHeaders:["cf-connecting-ip"]
+      }
+    }
+  },
   emailAndPassword: { 
     enabled: true, 
     sendResetPassword:async({user,url,token},request)=>{

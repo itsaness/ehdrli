@@ -134,26 +134,8 @@ getPlans();
     <article class="plans">
         <article class="plan1">
             <h2>Plus</h2>
-            <p><h2>{{plans[0]?.price}}</h2> DA</p>
+            <p><h2>{{plans[1]?.price}}</h2> DA</p>
             <p>Essential voices and limits for your daily audio needs</p>
-            <ul>
-                <li><span class="material-symbols-outlined">
-check_circle
-</span>
-                <p>Text To Speech Access</p></li>
-                <li> <span class="material-symbols-outlined">
-check_circle
-</span>
-                <p>{{ plans[0]?.character_limit }} Characters</p></li>
-               
-           </ul>
-           <button @click="handleCheckout(plans[0]?.id)">Get Started</button>
-
-        </article>
-        <article class="plan1">
-            <h2>Pro</h2>
-            <p><h2>{{ plans[1]?.price }}</h2> DA</p>
-            <p>Maximum limits and priority generation for heavy users.</p>
             <ul>
                 <li><span class="material-symbols-outlined">
 check_circle
@@ -165,7 +147,25 @@ check_circle
                 <p>{{ plans[1]?.character_limit }} Characters</p></li>
                
            </ul>
-           <button id="plansjoinnowbtn" @click="handleCheckout(plans[1]?.id)">Join Now</button>
+           <button @click="handleCheckout(plans[1]?.id)">Get Started</button>
+
+        </article>
+        <article class="plan1">
+            <h2>Pro</h2>
+            <p><h2>{{ plans[0]?.price }}</h2> DA</p>
+            <p>Maximum limits and priority generation for heavy users.</p>
+            <ul>
+                <li><span class="material-symbols-outlined">
+check_circle
+</span>
+                <p>Text To Speech Access</p></li>
+                <li> <span class="material-symbols-outlined">
+check_circle
+</span>
+                <p>{{ plans[0]?.character_limit }} Characters</p></li>
+               
+           </ul>
+           <button id="plansjoinnowbtn" @click="handleCheckout(plans[0]?.id)">Join Now</button>
 
         </article>
         
