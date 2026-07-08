@@ -126,7 +126,7 @@ Any dispute, controversy, or claim arising out of or relating to these Terms, or
              <li>Modifications to Terms</li>
              <p>We reserve the right to modify these Terms at any time. We will notify users of significant changes via email or an alert on the platform. Continued use of eHdrli after changes are published constitutes your acceptance of the revised Terms.</p>
 </ol>
-    <p><b>Contact Us</b> If you have any questions about these Terms, please contact us at:</p>
+    <p><b>Contact Us</b> If you have any questions about these Terms, please contact us at: support@ehdrli.com</p>
         
        
     </article>
