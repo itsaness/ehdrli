@@ -16,7 +16,7 @@ let verificationEmailSuccess=ref(null);
 
 const getPlans = async()=>{
     try{
-        let response = await fetch("https://api.dzoin.com/api/plans");
+        let response = await fetch("https://api.ehdrli.com/api/plans");
         if(!response.ok){
             return;
         }
@@ -39,7 +39,7 @@ const handleCheckout = async(planId)=>{
       router.push("/login");
     }
     try{
-    let response = await fetch("https://api.dzoin.com/api/checkout",options);
+    let response = await fetch("https://api.ehdrli.com/api/checkout",options);
     if(!response.ok){
         return;
     }
@@ -87,7 +87,7 @@ getPlans();
 <template>
     <div class="navigationmenu" v-show="isMenu">
         <div class="navigationmenutitle">
-             <h2>Dzoin</h2>
+             <h2>eHdlri</h2>
              <span class="material-symbols-outlined" @click="isMenu=false">close_small</span>
         </div>
         <div class="navigationmenulinks">
@@ -109,7 +109,7 @@ getPlans();
     <div class="maincontainer">
     <header>
     <nav class="nav">
-    <routerLink to="/"><h2>Dzoin</h2></routerLink> 
+    <routerLink to="/"><h2>eHdrli</h2></routerLink> 
     <ul>
         <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
         <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
@@ -193,14 +193,14 @@ check_circle
 
 </main>
 <footer class="footer">
-        <h2>Dzoin</h2>
+        <h2>eHdrli</h2>
         <div class="footerlinks">
             <RouterLink to="/privacy"><p :class="{isLink:route.path=='/privacy'}">Privacy</p></RouterLink>
             <RouterLink to="/terms"><p :class="{isLink:route.path=='/terms'}">Terms</p></RouterLink>
             <RouterLink to="/pricing"><p :class="{isLink:route.path=='/pricing'}">Pricing</p></RouterLink>
             <RouterLink to="/text-to-speech"><p :class="{isLink:route.path=='/text-to-speech'}">Text to speech</p></RouterLink>
         </div>
-        <p>© 2026 Dzoin. All rights reserved.</p>
+        <p>© 2026 eHdrli. All rights reserved.</p>
     </footer>
     </div>
    

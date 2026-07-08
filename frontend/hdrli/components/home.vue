@@ -49,7 +49,7 @@ let handleEmailVerification =async ()=>{
 <template>
     <div class="navigationmenu" v-show="isMenu">
         <div class="navigationmenutitle">
-            <h2> Dzoin</h2>
+            <h2>eHdrli</h2>
              <span class="material-symbols-outlined" @click="isMenu=false">close_small</span>
         </div>
         <div class="navigationmenulinks">
@@ -72,7 +72,7 @@ let handleEmailVerification =async ()=>{
 <header>
     <nav class="nav">
     <div class="navlogo">
-    <routerLink to="/"><h2>  Dzoin</h2></routerLink> 
+    <routerLink to="/"><h2>eHdrli</h2></routerLink> 
     </div>
     
     <ul>
@@ -143,7 +143,7 @@ let handleEmailVerification =async ()=>{
     <article class="quote">
     <span class="material-symbols-outlined">format_quote</span>
     <h2>"We started this project with one simple goal: to remove the friction between a great script and professional audio. Your words deserve to be heard, and you shouldn't need a recording studio to make that happen."</h2>
-    <p>hdrli ceo</p>
+    <p>eHdrli ceo</p>
     </article>
 </main>
  <footer class="footer">
@@ -161,7 +161,7 @@ let handleEmailVerification =async ()=>{
             <a href=""><img src="/whatsapp.svg" alt=""></a>
 
         </div>
-        <p>© 2026 hdrli. All rights reserved.</p>
+        <p>© 2026 eHdrli. All rights reserved.</p>
     </footer>
 </div>
 </template>

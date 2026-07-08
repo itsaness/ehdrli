@@ -32,7 +32,7 @@ let handleEmailVerification =async ()=>{
      <header>
     <nav class="nav">
     <div class="navlogo">
-    <routerLink to="/"><h2>  Dzoin</h2></routerLink> 
+    <routerLink to="/"><h2>  eHdrli</h2></routerLink> 
     </div>
     
     <ul>
@@ -62,7 +62,7 @@ let handleEmailVerification =async ()=>{
     <article class="terms">
         <h2>Privacy Policy</h2>
         <p><b>Effective Date:</b> July 5, 2026</p>
-        <p>Welcome to Dzoin ("we," "our," or "us"). We are committed to protecting your personal data in strict compliance with <b>Algerian Law No. 18-07</b> of June 10, 2018, relating to the protection of natural persons in the processing of personal data.</p>
+        <p>Welcome to eHdrli ("we," "our," or "us"). We are committed to protecting your personal data in strict compliance with <b>Algerian Law No. 18-07</b> of June 10, 2018, relating to the protection of natural persons in the processing of personal data.</p>
         <ol>
             <li>Data We Collect</li>
             <p>We collect the information necessary to provide our services, including:</p>
@@ -94,7 +94,7 @@ let handleEmailVerification =async ()=>{
             <li>Contact Us</li>
             <p>To exercise your rights or ask questions, please contact us at:</p>
             <ul>
-                <li><b>Email:</b>support@dzoin.com</li>
+                <li><b>Email:</b>support@ehdrli.com</li>
             </ul>
             <p>By using our services, you consent to the collection and use of your data as described in this policy.</p>
             </ol>

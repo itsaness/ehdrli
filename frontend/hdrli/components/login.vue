@@ -64,7 +64,7 @@ let handleSocialSignUp=async()=>{
         </div>
         <div class="loginpresentation">
       <article class="logintitle">
-        <h2>Join Dzoin</h2>
+        <h2>Join eHdrli</h2>
         <p>Welcome back log in to your account to continue generating lifelike audio.</p>
       </article>
       <article class="loginformcontainer">

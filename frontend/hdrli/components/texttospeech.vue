@@ -35,7 +35,7 @@ let getCharacters = async ()=>{
         },
     }
     try{
-    let response = await fetch("https://api.dzoin.com/api/characters",options);
+    let response = await fetch("https://api.ehdrli.com/api/characters",options);
     if(!response.ok){
         return;
     }
@@ -47,7 +47,7 @@ let getCharacters = async ()=>{
 }
 let getVoices= async ()=>{
     try{
-    let response = await fetch("https://api.dzoin.com/api/voices");
+    let response = await fetch("https://api.ehdrli.com/api/voices");
     if(!response.ok){
         return;
     }
@@ -86,7 +86,7 @@ let generateAudio = async()=>{
     });
     isLoading.value=true;
     try{
-    let response = await fetch("https://api.dzoin.com/api/voices",options);
+    let response = await fetch("https://api.ehdrli.com/api/voices",options);
     if(!response.ok){
         return;
     }
@@ -155,7 +155,7 @@ getVoices();
 <template>
     <div class="navigationmenu" v-show="isMenu">
         <div class="navigationmenutitle">
-             <h2>Dzoin</h2>
+             <h2>Ehdrli</h2>
              <span class="material-symbols-outlined" @click="isMenu=false">close_small</span>
         </div>
         <div class="navigationmenulinks">
@@ -178,7 +178,7 @@ getVoices();
     <div class="maincontainer">
 <header>
     <nav class="nav">
-    <routerLink to="/"><h2>Dzoin</h2></routerLink> 
+    <routerLink to="/"><h2>eHdrli</h2></routerLink> 
     <ul>
         <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
         <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>

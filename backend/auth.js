@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 
  export const auth = betterAuth({
-  trustedOrigins:["http://localhost:3000","http://localhost:5173","https://api.dzoin.com","https://dzoin.com"],
+  trustedOrigins:["http://localhost:3000","http://localhost:5173","https://api.ehdrli.com","https://ehdrli.com","https://www.ehdrli.com"],
   secret:process.env.BETTER_AUTH_SECRET,
   baseURL:process.env.BETTER_AUTH_URL,
   rateLimit:{
@@ -35,10 +35,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
     sendResetPassword:async({user,url,token},request)=>{
     try{
       const {data,error}=await resend.emails.send({
-        from:"Dzoin Security <support@dzoin.com>",
+        from:"eHdrli Security <support@ehdrli.com>",
         to:user.email,
         subject:"Reset your password",
-        html:`<p>Click the button below to finalize your password change for Dzoin</p>
+        html:`<p>Click the button below to finalize your password change for eHdrli</p>
               <a href="${url}">Click here</a>   
         `
       })
@@ -59,10 +59,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
     sendVerificationEmail:async({user,url,token},request)=>{
       try{
         const {data,error}=await resend.emails.send({
-        from:"Dzoin Security <support@dzoin.com>",
+        from:"eHdrli Security <support@ehdrli.com>",
         to:user.email,
         subject:"Verify your email",
-        html:`<p>Click the button below to verify your email for Dzoin</p>
+        html:`<p>Click the button below to verify your email for eHdrli</p>
               <a href="${url}">Click here</a>   
         `
       })

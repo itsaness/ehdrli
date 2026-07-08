@@ -8,7 +8,7 @@ import plansRoute from "./routes/plansRoute.js";
 import { toNodeHandler } from "better-auth/node";
 import {auth} from "./auth.js";
 const originOptions = {
-    origin:['http://localhost:5173','https://dzoin.com' ],
+    origin:['http://localhost:5173','https://ehdrli.com','https://www.ehdrli.com' ],
     methods:['GET','POST','PUT','DELETE','OPTIONS'],
     allowedHeaders:['Content-Type','Authorization'],
     credentials:true
