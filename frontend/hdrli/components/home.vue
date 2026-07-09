@@ -49,7 +49,7 @@ let handleEmailVerification =async ()=>{
 <template>
     <div class="navigationmenu" v-show="isMenu">
         <div class="navigationmenutitle">
-            <h2>eHdrlih</h2>
+            <h2>eHdrli</h2>
              <span class="material-symbols-outlined" @click="isMenu=false">close_small</span>
         </div>
         <div class="navigationmenulinks">
