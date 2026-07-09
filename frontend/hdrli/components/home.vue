@@ -72,7 +72,7 @@ let handleEmailVerification =async ()=>{
 <header>
     <nav class="nav">
     <div class="navlogo">
-    <routerLink to="/"><h2>eHdrlih</h2></routerLink> 
+    <routerLink to="/"><h2>eHdrli</h2></routerLink> 
     </div>
     
     <ul>
