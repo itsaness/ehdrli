@@ -11,10 +11,12 @@ export const toDarija = async (text)=>{
 
 Your job is to convert it into Arabic script while:
 - Keeping it as Darija (do NOT translate to MSA/فصحى)
-- Preserving French loanwords but write them phonetically in Arabic script (e.g. "la voiture" → "لا فواتير", "normal" → "نورمال")
+- French loanwords commonly used in Algerian speech: write them phonetically in Arabic script (e.g. "normal" → "نورمال", "la voiture" → "لا فواتير")
 - Numbers used as letters: 3=ع, 7=ح, 9=ق, 2=ء, 8=غ (e.g. "3lash" → "علاش", "9ahwa" → "قهوة")
-- Return ONLY the Arabic script text, nothing else
-
+- Pure English words that are NOT part of Darija speech: keep them as-is in Latin script
+- Proper nouns, brand names, and technical terms: keep them as-is in Latin script
+- Do NOT translate words — only transliterate/convert script
+- Return ONLY the converted text, nothing else
 Text: `,
         messages:[{content:text,role:"user"}],
        model:"claude-haiku-4-5"
