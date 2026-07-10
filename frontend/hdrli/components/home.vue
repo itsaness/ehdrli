@@ -90,7 +90,7 @@ let handleEmailVerification =async ()=>{
     </div>
     <span class="material-symbols-outlined" @click="isMenu=true">menu</span>
     </nav>
-    <hr>
+    
 </header>
 <main>
     <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
@@ -135,7 +135,10 @@ let handleEmailVerification =async ()=>{
           <span class="material-symbols-outlined">wand_stars</span>
         <h2>Generate & Download</h2>
         <p>Click generate and let our advanced AI engine process your text in seconds. Preview the audio stream instantly, then download your studio-quality MP3 file ready for use.</p>
-        <av-line  :line-width="2" line-color="lime" src="/ehdrli.mp3"></av-line>
+        <div class="howtocontentaudio">
+          <av-line  :line-width="2" line-color="lime" src="/ehdrli.mp3"></av-line>      
+        </div>
+            
         </article>
         </div>
         

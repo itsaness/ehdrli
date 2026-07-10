@@ -125,7 +125,7 @@ getPlans();
     </div>
     <span class="material-symbols-outlined" @click="isMenu=true">menu</span>
     </nav>
-    <hr>
+    
 </header>
 <main>
    <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
@@ -142,34 +142,30 @@ getPlans();
     <article class="plans">
         <article class="plan1">
             <h2>Plus</h2>
-            <p><h2>{{plans[1]?.price}}</h2> DA</p>
+            <p><h2>{{plans[1]?.price}}</h2> <b>DA</b></p>
             <p>Essential voices and limits for your daily audio needs</p>
             <ul>
-                <li><span class="material-symbols-outlined">
-check_circle
-</span>
+                <li><img src="/check.png" alt="">
                 <p>Text To Speech Access</p></li>
-                <li> <span class="material-symbols-outlined">
-check_circle
-</span>
+                <li><img src="/check.png" alt="">
+                <p>Ai Franco-darija to Arabic-darija</p></li>
+                <li> <img src="/check.png" alt="">
                 <p>{{ plans[1]?.character_limit }} Characters</p></li>
                
            </ul>
            <button @click="handleCheckout(plans[1]?.id)">Get Started</button>
 
         </article>
-        <article class="plan1">
+        <article class="plan2">
             <h2>Pro</h2>
-            <p><h2>{{ plans[0]?.price }}</h2> DA</p>
+            <p><h2>{{ plans[0]?.price }}</h2><b>DA</b> </p>
             <p>Maximum limits and priority generation for heavy users.</p>
             <ul>
-                <li><span class="material-symbols-outlined">
-check_circle
-</span>
+                <li><img src="/check.png" alt="">
                 <p>Text To Speech Access</p></li>
-                <li> <span class="material-symbols-outlined">
-check_circle
-</span>
+                <li><img src="/check.png" alt="">
+                <p>Ai Franco-darija to Arabic-darija</p></li>
+                <li> <img src="/check.png" alt="">
                 <p>{{ plans[0]?.character_limit }} Characters</p></li>
                
            </ul>

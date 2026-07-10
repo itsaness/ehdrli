@@ -50,7 +50,7 @@ let handleEmailVerification =async ()=>{
     </div>
     <span class="material-symbols-outlined" @click="isMenu=true">menu</span>
     </nav>
-    <hr>
+    
 </header>
 <main class="termscontainer">
      <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">

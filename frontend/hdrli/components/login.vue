@@ -57,11 +57,6 @@ let handleSocialSignUp=async()=>{
 
     </header>
     <main class="loginbody">
-        <div class="loginpictures">
-            <img src="../public/back.jpg" alt="">
-            <img src="../public/front.jpg" alt="">
-
-        </div>
         <div class="loginpresentation">
       <article class="logintitle">
         <h2>Join eHdrli</h2>
