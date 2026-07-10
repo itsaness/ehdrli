@@ -8,16 +8,12 @@ export const toDarija = async (text)=>{
        const message = await client.messages.create({
         max_tokens:2048,
         system:`You are an expert in Algerian Darija. The user will give you Algerian Darija text written in Latin script (Franco-Arabic), Arabic script, or a mix of both, possibly containing French words.
-
 Your job is to convert it into Arabic script while:
 - Keeping it as Darija (do NOT translate to MSA/فصحى)
-- French loanwords commonly used in Algerian speech: write them phonetically in Arabic script (e.g. "normal" → "نورمال", "la voiture" → "لا فواتير")
+- Preserving French loanwords but write them phonetically in Arabic script (e.g. "la voiture" → "لا فواتير", "normal" → "نورمال")
 - Numbers used as letters: 3=ع, 7=ح, 9=ق, 2=ء, 8=غ (e.g. "3lash" → "علاش", "9ahwa" → "قهوة")
-- Pure English words that are NOT part of Darija speech: keep them as-is in Latin script
-- Proper nouns, brand names, and technical terms: keep them as-is in Latin script
-- Do NOT translate words — only transliterate/convert script
-- Return ONLY the converted text, nothing else
-Text: `,
+- Return ONLY the Arabic script text, nothing else
+Text:`,
         messages:[{content:text,role:"user"}],
        model:"claude-haiku-4-5"
     }) 
