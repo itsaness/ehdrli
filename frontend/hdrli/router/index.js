@@ -50,6 +50,9 @@ router.beforeEach(async (to,from)=>{
     }
     return true;
     }catch(err){
+        if(to.meta.requiresAuth){
+            return {path:"/login"};
+        }
         return true;
         
     }
