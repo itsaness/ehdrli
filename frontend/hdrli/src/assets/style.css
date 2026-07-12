@@ -659,7 +659,108 @@ footer{
     color: #793F29;
 
 }
-
+/* dashboard */
+.userdashboardhero,.userdashboardsecurity{
+    gap: 5px;
+    padding: 5px 10px;
+}
+.userdashboardsecurity{
+    display:flex;
+    flex-direction:column;
+    background-color:#F6ECE5;
+    gap: 5px;
+}
+.userdashboardsecurity h2{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+}
+.userdashboardsecurity span{
+    color:#8C4E37;
+}
+.userdashboardsecurity input{
+    background-color:#FFF8F4;
+    height: 52px;
+    width: 100%;
+    border: none;
+    padding: 1px 2px;
+}
+.userdashboardsecurityemail,.userdashboardsecuritypassword{
+    display: flex;
+    flex-direction: column;
+    background-color:#FFF8F4;
+    gap: 10px;
+    padding: 5px 10px;
+}
+.userdashboardsecurityemail button,.userdashboardsecuritypassword button,#passwordchangecancel{
+    background-color:#FFF8F4;
+    height: 38px;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 2px solid #ffd8c1;
+    cursor:pointer;
+    color: black;
+}
+.userdashboardsecurityemail button:hover{
+    background-color:#ffd8c1;
+}
+.userdashboardsecuritypassword button,.userdashboardchangeemail button:nth-of-type(1){
+    background-color: #46583C;
+    color: white;
+    border: none;
+}
+.userdashboardsecuritypassword button:hover,.userdashboardchangeemail button:nth-of-type(1):hover{
+    transform:scale(1.02);
+}
+.subscriptioncontainer{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+}
+.userdashboardsubscriptions{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color:#F6ECE5;
+    
+}
+.userdashboardsubscriptions h2{
+    display: flex;
+    align-items: center;
+}
+.userdashboardsubscriptions h2>span{
+    text-align: center;
+    color: #8C4E37;
+}
+.subscriptiontitle{
+    display: flex;
+    align-items: center;
+    justify-content:space-between
+}
+.subscriptiontitle p{
+    color:#8C4E37;
+    background-color:#FEAE91;
+    border-radius:12px;
+    padding: 5px 10px;
+}
+.userdashboardsubscription{
+    background-color:#FFF8F4;
+    padding: 5px 10px;
+}
+.subscriptioncontent{
+    display:flex;
+    flex-direction: column;
+}
+.subscriptioncontent p{
+    display: flex;
+    text-align:center;
+}
+.userdashboardchangeemail{
+    display: flex;
+    gap: 10px;
+    padding: 5px 10px;
+}
 
 
 @media (min-width:481px) and (max-width:768px){
@@ -756,6 +857,31 @@ footer{
     width: 40vw;
     border-radius:32px;
    }
+   /* user dashboard */
+   .userdashboardcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+
+ }
+ .userdashboardhero{
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+
+ }
+ .userdashboardsecurity{
+    width: 70vw;
+    border-radius: 32px;
+    padding: 10px 20px;
+ }
+ .userdashboardsubscriptions{
+    width: 70vw;
+    border-radius: 32px;
+    padding: 10px 20px;
+ }
    
 
     
@@ -959,6 +1085,32 @@ footer{
     width: 40vw;
     border-radius:32px;
    }
+   /*  user dashboard */
+ .userdashboardcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+
+ }
+ .userdashboardhero{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+
+ }
+ .userdashboardsecurity{
+    width: 50vw;
+    border-radius: 32px;
+    padding: 10px 20px;
+ }
+ .userdashboardsubscriptions{
+    width: 50vw;
+    border-radius: 32px;
+    padding: 10px 20px;
+ }
+  
    
     
     

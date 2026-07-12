@@ -10,6 +10,31 @@ const resend = new Resend(process.env.RESEND_API_KEY);
   trustedOrigins:["http://localhost:3000","http://localhost:5173","https://api.ehdrli.com","https://ehdrli.com","https://www.ehdrli.com"],
   secret:process.env.BETTER_AUTH_SECRET,
   baseURL:process.env.BETTER_AUTH_URL,
+  user:{
+    changeEmail:{
+      enabled:true,
+      sendChangeEmailConfirmation:async({user,newEmail,url,token},request)=>{
+        try{
+ const {data,error}=await resend.emails.send({
+            from:`eHdrli Security <support@ehdrli.com>`,
+            to:user.email,
+            subject:"Approve email change",
+            html:`<p>Click the link below to approve the change to ${newEmail}</p>
+                  <a href=${url}>Click here</a>
+            `
+          })
+          if(error){
+            console.error(error.message);
+            throw new Error(error.message);
+          }
+        }catch(err){
+          console.error(err.message);
+          throw err;
+         
+        }
+      }
+    }
+  },
   rateLimit:{
     window:60,
     max:100,

@@ -8,6 +8,7 @@ import forgotpasswordView from "../views/forgotpasswordView.vue";
 import resetpasswordView from "../views/resetpasswordView.vue";
 import termsView from "../views/termsView.vue";
 import privacyView from "../views/privacyView.vue";
+import userdashboardView from "../views/userdashboardView.vue";
 import { authClient } from "@/auth-client.js";
 
 
@@ -23,7 +24,8 @@ const routes = [
     {path:"/forgot-password",name:"forgotpassword",component:forgotpasswordView,meta:{requiresGuest:true}},
     {path:"/reset-password",name:"resetpassword",component:resetpasswordView,meta:{requiresGuest:true}},
     {path:"/terms",name:"terms",component:termsView},
-    {path:"/privacy",name:"privacypolicy",component:privacyView}
+    {path:"/privacy",name:"privacypolicy",component:privacyView},
+    {path:"/account",name:"userdashboard",component:userdashboardView,meta:{requiresAuth:true}}
 
 
 ]
@@ -40,8 +42,11 @@ router.beforeEach(async (to,from)=>{
         if(session){
              return {path:"/"};
         }
-           
-        
+    }
+    if(to.meta.requiresAuth){
+        if(!session){
+            return {path:"/login"};
+        }
     }
     return true;
     }catch(err){

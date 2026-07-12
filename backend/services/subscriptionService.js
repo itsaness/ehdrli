@@ -13,6 +13,7 @@ export const getCharactersUsage = async(userId)=>{
             used:totalUsed,
             limit:totalLimit,
             remaining:totalRemaining,
+            subscriptions:rows,
         }
     }catch(err){
         throw err;
