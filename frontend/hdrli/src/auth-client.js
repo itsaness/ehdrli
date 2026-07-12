@@ -1,4 +1,4 @@
 import { createAuthClient } from "better-auth/vue"
 export const authClient = createAuthClient({
-    baseURL: "http://localhost:3000" // The base URL of your auth server
+    baseURL: "https://api.ehdrli.com" // The base URL of your auth server
 })
