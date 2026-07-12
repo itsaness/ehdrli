@@ -45,7 +45,7 @@ let handleEmailVerification =async ()=>{
     <button @click="$router.push('/sign-up')">Sign up</button>
     </div>
     <div class="navperson" v-show="session.data">
-        <p>{{ name }}</p>
+        <p @click="$router.push('/account')">{{ name }}</p>
         <button @click="handleSignout()">Sign out</button>
     </div>
     <span class="material-symbols-outlined" @click="isMenu=true">menu</span>

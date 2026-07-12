@@ -163,6 +163,8 @@ getVoices();
         <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
         <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
         <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
+        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>Account</li></routerLink>
+
             </ul>
              <div class="navmenubtn">
 <button v-show="!session.data" @click="$router.push('/login')">Sign in</button>
@@ -189,7 +191,7 @@ getVoices();
     <button @click="$router.push('/sign-up')">Sign up</button>
     </div>
     <div class="navperson" v-show="session.data">
-        <p>{{ name }}</p>
+        <p @click="$router.push('/account')">{{ name }}</p>
         <button @click="handleSignout()">Sign out</button>
     </div>
     <span class="material-symbols-outlined" @click="isMenu=true">menu</span>

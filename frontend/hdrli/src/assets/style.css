@@ -102,6 +102,12 @@ button{
 .navperson{
     display: none;
 }
+.navperson p{
+    cursor:pointer;
+}
+.navperson p:hover{
+    color: blue;
+}
 .isLink{
     border-bottom:2px solid black;
 }

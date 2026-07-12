@@ -9,6 +9,7 @@ let email = computed(()=>session.value?.data?.user?.email);
 let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
 let verificationEmailError=ref(null);
 let verificationEmailSuccess=ref(null);
+let isMenu=ref(false);
 let handleEmailVerification =async ()=>{
     verificationEmailError.value=null;
     verificationEmailSuccess.value=null;
@@ -29,6 +30,29 @@ let handleEmailVerification =async ()=>{
 }
 </script>
 <template>
+    <div class="navigationmenu" v-show="isMenu">
+        <div class="navigationmenutitle">
+            <h2>eHdrli</h2>
+             <span class="material-symbols-outlined" @click="isMenu=false">close_small</span>
+        </div>
+        <div class="navigationmenulinks">
+            <ul>
+        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
+        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
+        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
+        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>Account</li></routerLink>
+
+            </ul>
+
+        </div>
+        <div class="navmenubtn">
+<button v-show="!session.data" @click="$router.push('/login')">Sign in</button>
+        <button v-show="session.data" @click="handleSignout()">Sign out</button>
+        </div>
+        
+
+
+    </div>
     <header>
     <nav class="nav">
     <div class="navlogo">
@@ -45,7 +69,7 @@ let handleEmailVerification =async ()=>{
     <button @click="$router.push('/sign-up')">Sign up</button>
     </div>
     <div class="navperson" v-show="session.data">
-        <p>{{ name }}</p>
+        <p @click="$router.push('/account')">{{ name }}</p>
         <button @click="handleSignout()">Sign out</button>
     </div>
     <span class="material-symbols-outlined" @click="isMenu=true">menu</span>

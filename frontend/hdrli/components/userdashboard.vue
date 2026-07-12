@@ -171,6 +171,8 @@ getSubscriptions();
         <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
         <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
         <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
+        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>Account</li></routerLink>
+
             </ul>
 
         </div>
@@ -193,6 +195,7 @@ getSubscriptions();
         <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
         <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
         <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
+
     </ul>
     <div class="navbtn" v-show="!session.data">
     <button @click="$router.push('/login')">Login</button>
@@ -261,7 +264,7 @@ getSubscriptions();
                 <article class="userdashboardsubscription">
                       <div class="subscriptiontitle">
                   <h2 v-if="subscription.character_limit==10000">Plus Plan</h2>
-                  <h2 v-if="subscription.character_limit==30000">Pro Plan</h2>
+                  <h2 v-if="subscription.character_limit==20000">Pro Plan</h2>
                   <p>Active</p>  
                 </div> 
                 <div class="subscriptioncontent">
