@@ -16,7 +16,7 @@ button{
 }
 .navigationmenu{
    position:fixed;
-   background-color:#FCF2EA;
+   background-color:#1A2500;
    z-index:2;
    width: 100vw;
    height: 100vh;
@@ -31,6 +31,12 @@ button{
   padding: 5px 10px;
   align-items: flex-start;
 }
+.navigationmenu h2{
+    color:#A7C957;
+}
+.navigationmenu li{
+    color:#C3C8BC;
+}
 .navigationmenulinks a{
     text-decoration:none;
     color: black;
@@ -44,6 +50,7 @@ button{
 }
 .navigationmenutitle span{
   cursor: pointer;
+  color: white;
   
 }
 .navigationmenutitle span:hover,.resetpasswordinput button:hover{
@@ -57,8 +64,8 @@ button{
 .navmenubtn button{
     width: 80vw;
     height: 52px;
-    background-color:#46583C;
-    color: white;
+    background-color:#A7C957;
+    color: #1A2500;
     border-radius:20px;
     cursor:pointer;
 }
@@ -86,6 +93,7 @@ button{
 }
 .nav span{
     cursor:pointer;
+    color: white;
 }
 .nav ul{
     display: none;
