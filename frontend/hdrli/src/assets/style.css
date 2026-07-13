@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    background-color: #0D0F0B;
 }
 *{
     font-family: "literata",sans-serif;
@@ -70,11 +71,11 @@ button{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FFF8F4;
+    background-color: #1A2500;
     padding: 5px 10px;
 }
-.nav h1{
-    color:#46583C;
+.nav h2{
+    color:#A7C957;
     cursor:pointer;
 }
 .nav h2>img{
@@ -97,25 +98,31 @@ button{
     color: black;
 }
 .nav li{
+    color:#C3C8BC;
     padding: 2px 4px;
 }
 .navperson{
     display: none;
 }
 .navperson p{
+    color: white;
     cursor:pointer;
 }
 .navperson p:hover{
-    color: blue;
+    color: lightgreen;
 }
 .isLink{
-    border-bottom:2px solid black;
+    border-bottom:2px solid #A7C957;
 }
 .presentation,.pricingpresentation{
     display: flex;
     text-align: center;
     flex-direction: column;
+    background-color:#1A2500;
     gap: 20px;
+}
+.presentation h2,.presentation p,.howitworks h2{
+    color:#E2E3DD;
 }
 .presentationbtn{
     display: flex;
@@ -128,13 +135,13 @@ button{
     width:300px;
     height: 52px;
     border-radius:20px;
-    background-color:#F6ECE5;
-    color: black;
+    background-color:#282A26;
+    color: white;
     cursor:pointer;
 }
 .presentationbtn button:nth-child(1){
-    background-color:#46583C;
-    color: white;
+    background-color:#A7C957;
+    color: #1A2500;
 }
 .presentationbtn button:nth-child(1):hover,.navmenubtn button:hover{
     transform:scale(1.05);
@@ -154,11 +161,12 @@ button{
 .audiovisual audio,.audiovisual canvas{
     border-radius:20px;
 }
+
 .howitworks{
     display: flex;
     text-align:center;
     flex-direction: column;
-    background-color: #FCF2EA;
+    background-color: #161814;
     border-radius: 20px;
     gap: 5px;
     
@@ -167,9 +175,21 @@ button{
     display:flex;
     flex-direction: column;
     text-align: left;
-    background-color:#FFF8F4;
+    background-color:#A7C957;
     padding: 10px 20px;
     border-radius:24px;
+}
+.howtocontainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+.howtocontent h2,.howtocontent p{
+    color: #1A2500;
+}
+.howtocontent span{
+    color:#2F4B00;
 }
 .howtocontentaudio{
     display: flex;
@@ -180,20 +200,33 @@ button{
 }
 .howtocontentprompt{
     display: flex;
-    background-color:#EBE1DA;
+    background-color:#43483E;
     padding: 5px 10px;
     border-radius: 48px;
 
+}
+.howtocontentprompt p{
+    color: white;
 }
 .quote{
     display: flex;
     text-align: center;
     flex-direction: column;
+    background-color:#282A26;
+}
+.quote span{
+    color:#43483E;
+}
+.quote p,h2{
+    color:#E2E3DD;
 }
 footer{
     display: flex;
     flex-direction: column;
-    background-color: #FCF2EA;
+    background-color: #161814;
+}
+.footer h2{
+    color:#A7C957;
 }
 .footerlinks{
     display: flex;
@@ -213,9 +246,18 @@ footer{
 }
 .footerlinks a{
     text-decoration:none;
-    color: black;
+    color: #C3C8BC;
+}
+.footer p{
+    color:#C3C8BC;
 }
 /* pricing */
+.pricingpresentation{
+    background-color:#1A1C18;
+}
+.pricingpresentation h2,p{
+    color:#E3E3DC;
+}
 .plans{
     display: flex;
     flex-direction: column;
@@ -231,7 +273,7 @@ footer{
     display: flex;
     text-align: center;
     flex-direction: column;
-    background-color:#f6f5e5;
+    background-color:#1A1C18;
     border: 1px solid transparent;
     border-radius:32px;
     padding: 10px 20px;
@@ -240,10 +282,13 @@ footer{
     display: flex;
     text-align: center;
     flex-direction: column;
-    background-color:#f6e5e7;
+    background-color:#1E201C;
     border: 1px solid transparent;
     border-radius:32px;
     padding:10px 20px;
+}
+#proplan{
+    color:#C2E570;
 }
 .plan1 ul,.plan2 ul{
     list-style-type: none;
@@ -254,22 +299,24 @@ footer{
     gap: 30px;
 }
 .plan1 button,.plan2 button{
-    background-color:#EBE1DA;
+    background-color: #1A1C18;
+    color: #C2E570;
+    border: 1px solid #C2E570;
     border-radius:20px;
     height: 44px;
     cursor:pointer;
 }
 #plansjoinnowbtn{
-    background-color: #46583C;
-    color: white;
+    background-color: #C2E570;
+    color: #263500;
 
 }
 .plan1 button:hover{
     transform:scale(1.05);
-    background-color: #eaf5ef;
+    background-color: #40453b;
 }
 #plansjoinnowbtn:hover{
-    background-color: #6a855b;
+    background-color: #def1b1;
 }
 .plans img{
         width: 32px;
@@ -283,7 +330,7 @@ footer{
 }
 .question{
     padding: 5px 10px;
-    background-color: #FFF8F4;
+    background-color: #2F312B;
     border-radius:32px;
 }
 .logintitle{
@@ -291,25 +338,25 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #FFF8F4;
+    background-color: #121410;
 }
 /* login */
 .loginpictures{
     display: none;
 }
 .loginbody{
-    background-color:#FFF8F4;
+    background-color:#121410;
 }
 .logintitle h2{
-    color:#46583C;
+    color:#C2E570;
 }
 .loginfooter{
     display: flex;
-    background-color: #FFF8F4;
+    background-color: #121410;
     height: 80vh;
 }
 .loginfooter a{
-    color: black;
+    color: #A0D3A5;
 }
 .loginform{
     display:flex;
@@ -317,20 +364,24 @@ footer{
     justify-content: center;
     gap: 15px;
     padding: 10px 20px;
-    background-color:white;
+    background-color:#1E201C;
     border-radius:24px;
     margin-left: 5px;
     margin-right:5px;
    
 }
+.loginform label{
+    color:#C5C9B4;
+}
 .loginform input{
-    background-color: #F6ECE5;
+    background-color: #292B26;
+    color: #C5C9B4;
     width: 100%;
     height:52px;
     outline: none;
+    border: none;
 }
 .loginform input:focus{
-    background-color: white;
     outline:none;
 
 }
@@ -348,27 +399,28 @@ footer{
     border-left:2px solid black;
     border-top:2px solid black ;
     border-bottom:2px solid black;
-    background-color:#F6ECE5;
+    background-color:#292B26;
     height: 54px;
     align-items: center;
     border-top-left-radius:48px;
     border-bottom-left-radius:48px;
     color: #C4C8BD;
+    border: none;
     
-}
-.inputfield:has(input:focus) span{
-    background-color: white;
 }
 .passwordlabel{
     display: flex;
     justify-content: space-between;
 }
+.passwordlabel a{
+    color:#C2E570;
+}
 .loginform button{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #46583C;
-    color: white;
+    background-color: #C2E570;
+    color: #263500;
     height: 52px;
     border-radius: 48px;
     cursor:pointer;
@@ -376,8 +428,8 @@ footer{
 .loginform button:nth-of-type(2){
     display: flex;
     gap: 5px;
-    background-color: #FCF2EA;
-    color: black;
+    background-color: #333531;
+    color: white;
 }
 .loginform button:nth-of-type(2) img{
     width: 20px;
@@ -387,9 +439,11 @@ footer{
     transform:scale(1.05);
 }
 .loginform button:nth-of-type(2):hover{
-    background-color: #f9e4d4;
+    background-color: #595d56;
 }
-
+.loginform p>a{
+    color:#A0D3A5;
+}
 /* speech-to-text*/
 .texttospeechmain{
     display:flex;
@@ -399,31 +453,31 @@ footer{
 .balance{
     display: flex;
     align-items: center;
-    background-color:#FCF2EA;
+    background-color:#292B26;
     padding: 5px 10px;
-    border-radius:48px;
+    
 }
 #chars{
-    color:#8C4E37;
+    color:#A0D3A5;
 }
 .voice{
     display:flex;
     align-items:center;
     justify-content: space-between;
-    background-color:#F6ECE5;
+    background-color:#232621;
     padding: 10px 20px;
     border-radius:48px;
     cursor:pointer;
 }
 .voice:hover{
-    background-color:#efded2;
+    background-color:#595d56;
 
 }
 .selectvoices{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color:#FCF2EA;
+    background-color:#232621;
     border-top-left-radius: 27px;
     border-top-right-radius: 27px;
     padding: 5px 10px;
@@ -433,6 +487,9 @@ footer{
     justify-content: center;
     cursor:pointer;
 }
+.selectvoicesexit span{
+    color: white;
+}
 .selectvoicestitle{
     display: flex;
     justify-content: space-between;
@@ -441,21 +498,23 @@ footer{
 }
 .selectvoicestitle span{
     cursor:pointer;
+    color: white;
 }
 .selectedvoice{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fdfaf8;
+    background-color: #333531;
     border-radius:48px;
     padding:5px 10px;
 }
 .selectedvoice:hover{
-    background-color: #f7ece4;
+    background-color: #595d56;
 }
 .prompt{
     display: flex;
     flex-direction:column;
+    border: none;
     gap: 20px;
 }
 .promptdarijasetting{
@@ -481,7 +540,8 @@ footer{
     cursor: pointer;
 }
 .prompt textarea{
-   background-color:#FCF2EA;
+   background-color:#232621;
+   color: #C5C9B4;
    width: 80%;
    height: 20vh;
    border-radius: 48px;
@@ -495,8 +555,8 @@ footer{
 .promptbtn button{
     display: flex;
     align-items: center;
-    background-color:#46583C;
-    color: white;
+    background-color:#C2E570;
+    color: #263500;
     border-radius:48px;
     padding: 5px 10px;
     cursor:pointer;
@@ -538,7 +598,7 @@ footer{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color:#FFF8F4;
+    background-color:#1E201B;
     padding: 5px 10px;
     border-radius: 24px;
     height:100vh;
@@ -551,7 +611,7 @@ footer{
     display:flex;
     flex-direction: column;
     align-items: center;
-    background-color:white;
+    background-color:#333530;
     padding: 10px 20px;
     gap: 20px;
     border-radius:48px;
@@ -560,7 +620,10 @@ footer{
     display: flex;
     width: 100%;
     height: 52px;
-    background-color:#FCF2EA;
+    background-color:#292B26;
+    border: none;
+    outline: none;
+    color:#E2E3D8;
 }
 .resetpasswordinput button{
     display:flex;
@@ -570,13 +633,13 @@ footer{
     height:52px;
     cursor:pointer;
     border-radius:48px;
-    background-color:#46583C;
+    background-color:#C2E570;
     color:white;
 }
 .resetpasswordinput a{
     display: flex;
     align-items: center;
-    color: #8C4E37;
+    color: #C2E570;
     text-decoration: none;
 }
 .resetpasswordinput a:hover{
@@ -584,7 +647,7 @@ footer{
 }
 /* reset password */
 .changepasswordmain{
-    background-color:#FFF8F4;
+    background-color:#333530;
     height:100vh;
     padding: 5px 10px;
 }
@@ -599,13 +662,18 @@ footer{
     flex-direction:column;
     gap: 20px;
 }
+.changepasswordform label{
+    color:#C4C8BB;
+}
 .changepasswordform input{
     height: 52px;
     width: 100%;
     border-left: none;
-    background-color:#F6ECE5;
+    border: none;
+    background-color:#444839;
     border-top-right-radius: 32px;
     border-bottom-right-radius:32px;
+    outline: none;
 }
 .changepasswordinput{
     display: flex;
@@ -614,19 +682,21 @@ footer{
 .changepasswordinput span{
     display: flex;
     align-items: center;
-    border:2px solid black;
+    border: none;
     border-right:none;
     height: 54px;
-    background-color:#F6ECE5;
+    background-color:#444839;
     border-top-left-radius:32px;
     border-bottom-left-radius:32px;
+    color: #C5C9B4;
+    outline: none;
 }
 .changepasswordform button{
     display: flex;
     justify-content: center;
     align-items:center;
-    background-color:#46583C;
-    color:white;
+    background-color:#C2E570;
+    color:#263500;
     border-radius: 32px;
     height: 54px;
     cursor:pointer;
@@ -636,12 +706,12 @@ footer{
     align-items:center;
     justify-content: center;
     gap: 5px;
-    color: #74786F;
+    color: #C2E570;
     text-decoration:none;
     padding: 5px 10px;
 }
 .changepasswordform button:hover{
-    transform:scale(1.05);
+    transform:scale(1.02);
 }
 /* terms */
 .termscontainer{
@@ -657,13 +727,15 @@ footer{
 .emailverificationnotice{
     display: flex;
     justify-content: center;
-    background-color: #FEAE91;
-    border-radius: 48px;
+    background-color: #3E4A2C;
     padding: 5px 10px;
 }
 .emailverificationnotice p{
-    color: #793F29;
+    color: #D9E7C1;
 
+}
+.emailverificationnotice a{
+    color: lightgreen;
 }
 /* dashboard */
 .userdashboardhero,.userdashboardsecurity{
@@ -673,7 +745,7 @@ footer{
 .userdashboardsecurity{
     display:flex;
     flex-direction:column;
-    background-color:#F6ECE5;
+    background-color:#1E201B;
     gap: 5px;
 }
 .userdashboardsecurity h2{
@@ -682,37 +754,40 @@ footer{
     gap: 10px;
 }
 .userdashboardsecurity span{
-    color:#8C4E37;
+    color:#A4D36E;
 }
 .userdashboardsecurity input{
-    background-color:#FFF8F4;
+    background-color:#1A1C18;
     height: 52px;
     width: 100%;
     border: none;
     padding: 1px 2px;
+    color:#E2E3D8;
 }
 .userdashboardsecurityemail,.userdashboardsecuritypassword{
     display: flex;
     flex-direction: column;
-    background-color:#FFF8F4;
+    background-color:#1E201B;
     gap: 10px;
     padding: 5px 10px;
 }
+.userdashboardsecurityemail label,.userdashboardsecuritypassword label{
+    color: #C5C8BA;
+}
 .userdashboardsecurityemail button,.userdashboardsecuritypassword button,#passwordchangecancel{
-    background-color:#FFF8F4;
+    background-color:#121410;
     height: 38px;
     width: 100%;
     padding: 5px 10px;
     border-radius: 20px;
-    border: 2px solid #ffd8c1;
     cursor:pointer;
-    color: black;
+    color: #A4D36E;
 }
 .userdashboardsecurityemail button:hover{
-    background-color:#ffd8c1;
+    background-color:#383f32;
 }
 .userdashboardsecuritypassword button,.userdashboardchangeemail button:nth-of-type(1){
-    background-color: #46583C;
+    background-color: #A4D36E;
     color: white;
     border: none;
 }
@@ -728,7 +803,7 @@ footer{
     display: flex;
     flex-direction: column;
     gap: 5px;
-    background-color:#F6ECE5;
+    background-color:#1E201B;
     
 }
 .userdashboardsubscriptions h2{
@@ -737,7 +812,7 @@ footer{
 }
 .userdashboardsubscriptions h2>span{
     text-align: center;
-    color: #8C4E37;
+    color: #A4D36E;
 }
 .subscriptiontitle{
     display: flex;
@@ -774,6 +849,11 @@ footer{
 
 }
 @media (min-width:769px) and (max-width:1024px){
+    .howtocontainer{
+        display: flex;
+        flex-direction:row;
+        gap: 5px;
+    }
      .plans{
         display: flex;
         flex-direction:row;
@@ -785,6 +865,7 @@ footer{
         display: flex;
         align-items: center;
         justify-content: center;
+        
     }
     .loginformcontainer{
         display: flex;
@@ -795,10 +876,10 @@ footer{
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        background-color: white;
+        background-color: #292B26;
     }
     #chars{
-        color: #8C4E37;
+        color: #A0D3A5;
     }
     .texttospeechcontainer{
         display:flex;
@@ -824,7 +905,6 @@ footer{
         display:none;
     }
     .prompt{
-        border: 1px solid #F6ECE5;
         border-radius: 24px;
         padding: 5px 10px;
         gap: 20px;
@@ -858,7 +938,7 @@ footer{
     flex-direction: column;
    }
    .changepasswordhero{
-    background-color: white;
+    background-color: #1E201C;
     padding: 5px 10px;
     width: 40vw;
     border-radius:32px;
@@ -915,7 +995,7 @@ footer{
     }
     .nav li:hover,.footerlinks a>p:hover{
         transform:scale(1.15);
-        background-color: #ececec;
+        background-color: #718d2d;
         border-radius: 5px;
     }
     .navbtn{
@@ -924,11 +1004,12 @@ footer{
     }
     .nav button:nth-of-type(1){
         border: none;
-        background-color: #FFF8F4;
+        background-color: #1A2500;
+        color: white;
         cursor:pointer;
     }
     .nav button:nth-of-type(2){
-        background-color: #46583C;
+        background-color: #A7C957;
         color: white;
         width: 109px;
         height: 36px;
@@ -976,9 +1057,11 @@ footer{
     }
     .presentationbtn button:nth-child(2):hover{
         transform:scale(1.05);
+        background-color:#3d3d3d;
     }
     .howtocontainer{
         display: flex;
+        flex-direction: row;
         justify-content: center;
         gap: 10px;
         padding: 10px 20px;
@@ -998,6 +1081,7 @@ footer{
     .pricingpresentation p{
         max-width:80ch;
         margin: 0 auto;
+        padding: 10px 20px;
     }
     .plans{
         display: flex;
@@ -1025,10 +1109,10 @@ footer{
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        background-color: white;
+        background-color: #292B26;
     }
     #chars{
-        color: #8C4E37;
+        color: #A0D3A5;
     }
     .texttospeechcontainer{
         display:flex;
@@ -1055,7 +1139,6 @@ footer{
         display:none;
     }
     .prompt{
-        border: 1px solid #F6ECE5;
         border-radius: 24px;
         padding: 5px 10px;
         gap: 20px;
@@ -1086,7 +1169,7 @@ footer{
     gap: 0px;
    }
    .changepasswordhero{
-    background-color: white;
+    background-color: #1E201C;
     padding: 5px 10px;
     width: 40vw;
     border-radius:32px;

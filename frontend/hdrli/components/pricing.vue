@@ -159,7 +159,7 @@ getPlans();
 
         </article>
         <article class="plan2">
-            <h2>Pro</h2>
+            <h2 id="proplan">Pro</h2>
             <p><h2>{{ plans[0]?.price }}</h2><b>DA</b> </p>
             <p>Maximum limits and priority generation for heavy users.</p>
             <ul>

@@ -21,7 +21,7 @@ const routes = [
     {path:"/login",name:"login",component:loginView,meta:{requiresGuest:true}},
     {path:"/sign-up",name:"signup",component:signupView,meta:{requiresGuest:true}},
     {path:"/text-to-speech",name:"texttospeech",component:texttospeechView},
-    {path:"/forgot-password",name:"forgotpassword",component:forgotpasswordView,meta:{requiresGuest:true}},
+    {path:"/forgot-password",name:"forgotpassword",component:forgotpasswordView},
     {path:"/reset-password",name:"resetpassword",component:resetpasswordView,meta:{requiresGuest:true}},
     {path:"/terms",name:"terms",component:termsView},
     {path:"/privacy",name:"privacypolicy",component:privacyView},

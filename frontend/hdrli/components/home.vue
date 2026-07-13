@@ -96,7 +96,7 @@ let handleEmailVerification =async ()=>{
 </header>
 <main>
     <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
-    <p  style="color: green;" v-if="verificationEmailSuccess!=null">{{ verificationEmailSuccess }}</p>
+    <p  style="color: greenyellow;" v-if="verificationEmailSuccess!=null">{{ verificationEmailSuccess }}</p>
     <p style="color:red;" v-else-if="verificationEmailError!=null">{{ verificationEmailError }} </p>
     <p v-else>Please verify your email address to unlock all features.  <a href="#" @click.prevent="handleEmailVerification()">Resend Verification Link</a></p>
 
@@ -160,10 +160,10 @@ let handleEmailVerification =async ()=>{
             <RouterLink to="/text-to-speech"><p :class="{isLink:route.path=='/text-to-speech'}">Text to speech</p></RouterLink>
         </div>
         <div class="footersocials">
-            <a href=""><img src="/instagram.svg" alt=""></a>
-            <a href=""><img src="/facebook.svg" alt=""></a>
-            <a href=""><img src="/x.svg" alt=""></a>
-            <a href=""><img src="/whatsapp.svg" alt=""></a>
+            <a href=""><img src="/instagram.png" alt=""></a>
+            <a href=""><img src="/facebook.png" alt=""></a>
+            <a href=""><img src="/twitter.png" alt=""></a>
+            <a href=""><img src="/whatsapp.png" alt=""></a>
 
         </div>
         <p>© 2026 eHdrli. All rights reserved.</p>

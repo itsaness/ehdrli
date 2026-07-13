@@ -54,7 +54,7 @@ let handlePasswordReset=async()=>{
 </script>
 <template>
     <main class="changepasswordmain">
-        <h2>Dzoin</h2>
+        <h2>eHdrli</h2>
         <hr>
         <article class="changepasswordhero">
              <h2>Create New Password</h2> 
