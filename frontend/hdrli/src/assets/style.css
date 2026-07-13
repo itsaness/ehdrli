@@ -729,7 +729,9 @@ footer{
 }
 .terms{
     max-width:800px;
-
+}
+.terms li{
+    color: white;
 }
 /* email verification notice */
 .emailverificationnotice{
