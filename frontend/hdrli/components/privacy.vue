@@ -2,6 +2,9 @@
 import { ref,computed } from 'vue';
 import { useRoute,useRouter } from 'vue-router';
 import { authClient } from '@/auth-client';
+import { useI18n } from 'vue-i18n';
+const {t,locale}=useI18n({useScope:"global"});
+let isMenu=ref(false);
 let route = useRoute();
 let router = useRouter();
 const session =  authClient.useSession();
@@ -27,36 +30,92 @@ let handleEmailVerification =async ()=>{
     }
 
 }
+let handleSignout=async()=>
+{
+    try{
+        const {error} = await authClient.signOut();
+        if(error){
+            return;
+        }
+        window.location.reload();
+    }catch(err){
+        console.error(err.message);
+    }
+}
+let switchLanguage=()=>{
+    if(locale.value=="en"){
+        locale.value="ar";
+    }else if(locale.value=="ar"){
+        locale.value="en";
+    }
+}
 </script>
 <template>
-     <header>
+     <div class="navigationmenu" v-show="isMenu">
+        <div class="navigationmenutitle">
+            <h2>eHdrli</h2>
+             <span class="material-symbols-outlined" @click="isMenu=false">close_small</span>
+        </div>
+        <div class="navigationmenulinks">
+            <ul>
+        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>{{ $t("home") }}</li></routerLink>
+        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>{{ $t("pricing") }}</li></routerLink>
+        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>{{ $t("texttospeech") }}</li></routerLink>
+        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>{{ $t("account") }}</li></routerLink>
+
+            </ul>
+        
+       
+        </div>
+        <div class="navmenubtn">
+<button v-show="!session.data" @click="$router.push('/login')">{{$t("login")}}</button>
+        <button v-show="session.data" @click="handleSignout()">{{ $t("signout") }}</button>
+        </div>
+        
+
+
+    </div>
+    <header>
     <nav class="nav">
     <div class="navlogo">
-    <routerLink to="/"><h2>  eHdrli</h2></routerLink> 
+    <routerLink to="/"><h2>eHdrli</h2></routerLink> 
     </div>
     
     <ul>
-        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
-        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
-        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
+        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>{{ $t("home") }}</li></routerLink>
+        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>{{ $t("pricing") }}</li></routerLink>
+        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>{{ $t("texttospeech") }}</li></routerLink>
+
     </ul>
+    
+
+    
+
+
+
     <div class="navbtn" v-show="!session.data">
-    <button @click="$router.push('/login')">Login</button>
-    <button @click="$router.push('/sign-up')">Sign up</button>
+    <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
+    <button @click="$router.push('/login')">{{ $t("login") }}</button>
+    <button @click="$router.push('/sign-up')">{{ $t("signup") }}</button>
     </div>
     <div class="navperson" v-show="session.data">
+        <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
         <p @click="$router.push('/account')">{{ name }}</p>
-        <button @click="handleSignout()">Sign out</button>
+        <button @click="handleSignout()">{{ $t("signout") }}</button>
     </div>
-    <span class="material-symbols-outlined" @click="isMenu=true">menu</span>
+    <div class="language">
+        <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
+       <span class="material-symbols-outlined" @click="isMenu=true">menu</span> 
+    </div>
+    
     </nav>
     
 </header>
 <main class="termscontainer">
     <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
-    <p  style="color: green;" v-if="verificationEmailSuccess!=null">{{ verificationEmailSuccess }}</p>
-    <p style="color:red" v-else-if="verificationEmailError!=null">{{ verificationEmailError }} </p>
-    <p v-else>Please verify your email address to unlock all features.  <a href="#" @click.prevent="handleEmailVerification()">Resend Verification Link</a></p>
+    <p  style="color: greenyellow;" v-if="verificationEmailSuccess!=null">{{ verificationEmailSuccess }}</p>
+    <p style="color:red;" v-else-if="verificationEmailError!=null">{{ verificationEmailError }} </p>
+    <p v-else>{{ $t("emailverificationnotice") }} <a href="#" @click.prevent="handleEmailVerification()">{{ $t("emailverificationlink") }}</a></p>
 
     </article>
     <article class="terms">
@@ -101,6 +160,47 @@ let handleEmailVerification =async ()=>{
 
        
     </article>
+        <article class="terms" dir="rtl">
+        <h2>سياسة الخصوصية</h2>
+        <p><b>تاريخ السريان:</b> 5 يوليو 2026</p>
+        <p>مرحباً بك في eHdrli ("نحن" أو "لنا" أو "خاصتنا"). نحن ملتزمون بحماية بياناتك الشخصية وفقاً لأحكام <b>القانون الجزائري رقم 18-07</b> المؤرخ في 10 يونيو 2018، المتعلق بحماية الأشخاص الطبيعيين في معالجة البيانات الشخصية.</p>
+        <ol>
+            <li>البيانات التي نجمعها</li>
+            <p>نجمع المعلومات الضرورية لتقديم خدماتنا، بما في ذلك:</p>
+            <ul>
+                <li>بيانات الهوية والتواصل:</li>
+                <p>الاسم وعنوان البريد الإلكتروني ورقم الهاتف.</p>
+                <li>البيانات التقنية:</li>
+                <p>عنوان IP ونوع المتصفح وملفات تعريف الارتباط لضمان وظائف الموقع.</p>
+            </ul>
+            <li>كيف نستخدم بياناتك</li>
+            <p>نستخدم بياناتك فقط من أجل:</p>
+            <ul>
+                <li>تقديم خدماتنا والحفاظ عليها.</li>
+                <li>إدارة حسابك ومعالجة المعاملات.</li>
+                <li>الرد على طلبات الدعم الخاصة بك.</li>
+            </ul>
+            <li>حماية البيانات ومشاركتها</li>
+            <p>نحن لا نبيع بياناتك الشخصية. نطبق تدابير أمنية صارمة لحماية معلوماتك من الوصول غير المصرح به. ولا ننقل بياناتك الشخصية خارج الجزائر دون موافقتك الصريحة أو الضرورة القانونية.</p>
+            <li>الاحتفاظ بالبيانات</li>
+            <p>نحتفظ ببياناتك الشخصية فقط طالما كان ذلك ضرورياً لتحقيق أغراض خدمتنا أو للامتثال للالتزامات القانونية الجزائرية.</p>
+            <li>حقوقك بموجب القانون 18-07</li>
+            <p>يحق لك:</p>
+            <ul>
+                <li><b>الوصول:</b> طلب نسخة من بياناتك الشخصية.</li>
+                <li><b>التصحيح:</b> طلب تصحيح البيانات غير الدقيقة.</li>
+                <li><b>الحذف:</b> طلب حذف بياناتك.</li>
+                <li><b>الاعتراض أو سحب الموافقة:</b> إيقاف معالجة بياناتك في أي وقت.</li>
+            </ul>
+            <li>تواصل معنا</li>
+            <p>لممارسة حقوقك أو طرح أسئلتك، يرجى التواصل معنا على:</p>
+            <ul>
+                <li><b>البريد الإلكتروني:</b> support@ehdrli.com</li>
+            </ul>
+            <p>باستخدام خدماتنا، فإنك توافق على جمع واستخدام بياناتك كما هو موضح في هذه السياسة.</p>
+        </ol>
+    </article>
+
 </main>
 <footer class="footer">
         <h2>eHdrli</h2>

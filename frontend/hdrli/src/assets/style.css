@@ -81,6 +81,17 @@ button{
     background-color: #1A2500;
     padding: 5px 10px;
 }
+.language{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.language img{
+    display: flex;
+    align-items: center;
+    width: 32px;
+    cursor: pointer;
+}
 .nav h2{
     color:#A7C957;
     cursor:pointer;
@@ -360,8 +371,10 @@ footer{
 }
 .loginfooter{
     display: flex;
+    align-items: center;
     background-color: #121410;
     height: 80vh;
+    padding: 5px 10px;
 }
 .loginfooter a{
     color: #A0D3A5;
@@ -942,6 +955,7 @@ footer{
     }
   
      /* change password */
+    
    .changepasswordmain{
     display:flex;
     align-items: center;
@@ -979,7 +993,8 @@ footer{
     border-radius: 32px;
     padding: 10px 20px;
  }
-   
+
+
 
     
     
@@ -991,9 +1006,17 @@ footer{
     padding-left: 20px;
     padding-right: 20px;
     }
-   .nav span{
-    display:none;
-   }
+    .navperson span,.navbtn span{
+        display: flex;
+        align-items: center;
+    }
+     .navbtn img,.navperson img{
+    width: 32px;
+    cursor: pointer;
+ }
+    .language{
+        display:none;
+    }
    .nav ul{
     display: flex;
     list-style-type:none;

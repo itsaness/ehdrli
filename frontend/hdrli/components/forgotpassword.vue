@@ -2,11 +2,13 @@
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { authClient } from '@/auth-client';
+import { useI18n } from 'vue-i18n';
 let email = ref();
 let route = useRoute();
 let isLoading=ref();
 let resetError=ref(null);
 let resetSuccess=ref(null);
+const {t}=useI18n();
 let handleReset = async()=>{
     if(isLoading.value){
         return;
@@ -43,13 +45,12 @@ let handleReset = async()=>{
         <p  style="color:green" v-if="resetSuccess!=null">{{ resetSuccess }}</p>
         <p v-if="resetError!=null" style="color:red">{{ resetError }}</p>
         <article class="resetpasswordhero">
-        <h2>Forgot your password ?</h2>
-        <p>Enter your email address and we'll send you a link to reset your password.</p>
+        <h2>{{ $t("forgotpasswordtitle") }}</h2>
+        <p>{{ $t("forgotpasswordp") }}</p>
        </article>
-        <label for="email"></label>
         <input type="text" placeholder="    hello@example.com" v-model="email" required>
-        <button type="submit" :disabled="resetSuccess!=null">Send Reset Link<span class="material-symbols-outlined">arrow_forward</span></button>
-        <RouterLink to="/login"><span class="material-symbols-outlined">arrow_left_alt</span> Back to Sign in</RouterLink>
+        <button type="submit" :disabled="resetSuccess!=null">{{ $t("resetlink") }}<span class="material-symbols-outlined">arrow_forward</span></button>
+        <RouterLink to="/login"><span class="material-symbols-outlined">arrow_left_alt</span> {{ $t("back") }}</RouterLink>
     </form>
         </div>
         

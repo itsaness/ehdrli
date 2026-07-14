@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { authClient } from '@/auth-client.js';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 let username=ref();
 let email=ref();
 let password = ref(null);
@@ -10,6 +11,8 @@ let registerError=ref(null);
 let passwordError=ref(null);
 let emailError=ref(null);
 let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const {t}=useI18n();
+
 let router=useRouter();
 let handleEmail =()=>{
     if(!email.value||!emailRegex.test(email.value)){
@@ -85,25 +88,25 @@ let handleSocialSignUp=async()=>{
         <div class="loginpresentation">
 <article class="logintitle">
         <h2>eHdrli</h2>
-        <p>Create your account join us today and start transforming your text into studio-quality voiceovers.</p>
+        <p>{{ $t("signuptitle") }}</p>
       </article>
       <article class="loginformcontainer">
         <form action="" class="loginform" @submit.prevent="handleSignUp">
         <p v-show="registerError!=null" style="color:red">{{ registerError }}</p>
-            <label for="name">Full Name</label>
+            <label for="name"> {{ $t("fullname") }}</label>
             <div class="inputfield">
                 <span class="material-symbols-outlined">person</span>
                 <input type="text" name="email"  placeholder="Jane Doe" v-model="username" required>
             </div> 
-           <label for="email">Email address</label>
+           <label for="email">{{ $t("email") }}</label>
            <div class="inputfield">
                 <span class="material-symbols-outlined">mail</span>
                 <input type="text" name="email"  placeholder="hello@example.com" v-model="email" @input="handleEmail()" required>
             </div> 
             <p v-if="emailError!=null" style="color:red">{{ emailError }}</p>
             <div class="passwordlabel">
-               <label for="password">Password</label> 
-               <a href="/forgot-password">Forgot password ?</a>
+               <label for="password">{{ $t("password") }}</label> 
+               <a href="/forgot-password"></a>
             </div>
 
             <div class="inputfield">
@@ -111,10 +114,10 @@ let handleSocialSignUp=async()=>{
             <input type="password" name="password" placeholder="••••••••" v-model="password" @input="handlePassword()" required>
             </div>
              <p style="color:red" v-show="passwordError!=null">{{ passwordError }}</p>
-            <button type="submit">Sign up <span class="material-symbols-outlined">arrow_forward</span></button>
-            <p>OR CONTINUE WITH</p>
+            <button type="submit">{{ $t("signup") }} <span class="material-symbols-outlined">arrow_forward</span></button>
+            <p>{{ $t("continuewith") }}</p>
             <button type="button" @click="handleSocialSignUp()"><img src="../public//google.png" alt="">Google</button>
-            <p>Already registered ? <routerLink to="/login">Sign in</routerLink></p>
+            <p>{{$t("alreadyregistered")}} <routerLink to="/login">{{$t("signinbtn")}}</routerLink></p>
 
         </form>
       
@@ -122,7 +125,7 @@ let handleSocialSignUp=async()=>{
 
       </article>
       <footer class="loginfooter">
-     <p>By authenticating, you agree to our <a href="">Terms</a> and <a href="">Privacy Policy.</a></p>
+     <p>{{$t("agree")}} <a href="/terms">{{$t("terms")}}</a> {{$t("and")}}<a href="/privacy">{{$t("privacy")}}</a></p>
     </footer>
         </div>
     </main>

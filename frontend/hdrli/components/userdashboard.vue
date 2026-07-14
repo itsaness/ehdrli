@@ -2,6 +2,7 @@
 import { ref,computed } from 'vue';
 import { useRoute,useRouter } from 'vue-router';
 import { authClient } from '@/auth-client';
+import { useI18n } from 'vue-i18n';
 let isMenu = ref(false);
 let route = useRoute();
 let router = useRouter();
@@ -24,6 +25,8 @@ let passwordSuccess=ref(null);
 let currentPassword=ref();
 let isChangePassword=ref(false);
 let subscriptions =ref([]);
+const {t,locale}=useI18n({useScope:"global"});
+
 
 let handleEmailVerification =async ()=>{
     verificationEmailError.value=null;
@@ -154,6 +157,13 @@ let getSubscriptions = async ()=>{
     }
 }
 getSubscriptions();
+let switchLanguage=()=>{
+    if(locale.value=="en"){
+        locale.value="ar";
+    }else if(locale.value=="ar"){
+        locale.value="en";
+    }
+}
 
 
 
@@ -161,24 +171,25 @@ getSubscriptions();
 
 </script>
 <template>
- <div class="navigationmenu" v-show="isMenu">
+  <div class="navigationmenu" v-show="isMenu">
         <div class="navigationmenutitle">
             <h2>eHdrli</h2>
              <span class="material-symbols-outlined" @click="isMenu=false">close_small</span>
         </div>
         <div class="navigationmenulinks">
             <ul>
-        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
-        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
-        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
-        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>Account</li></routerLink>
+        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>{{ $t("home") }}</li></routerLink>
+        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>{{ $t("pricing") }}</li></routerLink>
+        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>{{ $t("texttospeech") }}</li></routerLink>
+        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>{{ $t("account") }}</li></routerLink>
 
             </ul>
-
+        
+       
         </div>
         <div class="navmenubtn">
-<button v-show="!session.data" @click="$router.push('/login')">Sign in</button>
-        <button v-show="session.data" @click="handleSignout()">Sign out</button>
+<button v-show="!session.data" @click="$router.push('/login')">{{$t("login")}}</button>
+        <button v-show="session.data" @click="handleSignout()">{{ $t("signout") }}</button>
         </div>
         
 
@@ -192,66 +203,78 @@ getSubscriptions();
     </div>
     
     <ul>
-        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
-        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
-        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
+        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>{{ $t("home") }}</li></routerLink>
+        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>{{ $t("pricing") }}</li></routerLink>
+        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>{{ $t("texttospeech") }}</li></routerLink>
 
     </ul>
+    
+
+    
+
+
+
     <div class="navbtn" v-show="!session.data">
-    <button @click="$router.push('/login')">Login</button>
-    <button @click="$router.push('/sign-up')">Sign up</button>
+    <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
+    <button @click="$router.push('/login')">{{ $t("login") }}</button>
+    <button @click="$router.push('/sign-up')">{{ $t("signup") }}</button>
     </div>
     <div class="navperson" v-show="session.data">
-        <p>{{ name }}</p>
-        <button @click="handleSignout()">Sign out</button>
+        <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
+        <p @click="$router.push('/account')">{{ name }}</p>
+        <button @click="handleSignout()">{{ $t("signout") }}</button>
     </div>
-    <span class="material-symbols-outlined" @click="isMenu=true">menu</span>
+    <div class="language">
+        <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
+       <span class="material-symbols-outlined" @click="isMenu=true">menu</span> 
+    </div>
+    
     </nav>
     
 </header>
 <main class="userdashboardsubscriptionmain">
-    <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
-    <p  style="color: green;" v-if="verificationEmailSuccess!=null">{{ verificationEmailSuccess }}</p>
+     <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
+    <p  style="color: greenyellow;" v-if="verificationEmailSuccess!=null">{{ verificationEmailSuccess }}</p>
     <p style="color:red;" v-else-if="verificationEmailError!=null">{{ verificationEmailError }} </p>
-    <p v-else>Please verify your email address to unlock all features.  <a href="#" @click.prevent="handleEmailVerification()">Resend Verification Link</a></p>
+    <p v-else>{{ $t("emailverificationnotice") }} <a href="#" @click.prevent="handleEmailVerification()">{{ $t("emailverificationlink") }}</a></p>
 
     </article>
     <div class="userdashboardcontainer">
      <article class="userdashboardhero">
-        <h2>Hello, {{ name }}</h2>
-        <p>Manage your sanctuary settings.</p>
+        <h2>{{ $t("hello") }} {{ name }}</h2>
+        <p>{{$t("accounttitle")}}</p>
     </article>
     <article class="userdashboardsecurity">
-        <h2><span class="material-symbols-outlined">person</span>Account</h2>
+        <h2><span class="material-symbols-outlined">person</span>{{ $t("account") }}</h2>
         <div class="userdashboardsecurityemail">
          <p style="color:red" v-if="changeEmailError!=null" >{{ changeEmailError }}</p> 
         <p style="color:green" v-if="changeEmailSuccess!=null">{{ changeEmailSuccess }}</p>   
-  <label for="email">Email Address</label>
+  <label for="email">{{ $t("email") }}</label>
         <input type="text" :placeholder="email" :disabled="!isChangeEmail" v-model="newEmail" @input="checkEmail()">
-        <button v-if="!isChangeEmail" @click="isChangeEmail=true">Edit</button>  
+        <button v-if="!isChangeEmail" @click="isChangeEmail=true">{{ $t("edit") }}</button>  
         <div v-if="isChangeEmail" class="userdashboardchangeemail">
-          <button @click="handleEmailChange()">Save</button>
-          <button @click="handleCancel()">Cancel</button>
+          <button @click="handleEmailChange()">{{ $t("save") }}</button>
+          <button @click="handleCancel()">{{ $t("cancel") }}</button>
         </div>
          
         
         </div>
         <div class="userdashboardsecuritypassword">
              <p v-if="passwordSuccess!=null" style="color: green;">{{ passwordSuccess}}</p>
-            <label for="email" v-if="!isChangePassword">Password</label>
+            <label for="email" v-if="!isChangePassword">{{ $t("password") }}</label>
         <input type="password" placeholder="●●●●●●●" v-if="!isChangePassword">
-        <button v-if="!isChangePassword" @click="isChangePassword=true">Change Password</button> 
+        <button v-if="!isChangePassword" @click="isChangePassword=true">{{ $t("changepassword") }}</button> 
         <div v-if="isChangePassword">
             <p v-if="passwordError!=null" style="color: red;">{{ passwordError}}</p>
- <label for="email">Current password</label>
+ <label for="email">{{ $t("password") }}</label>
         <input type="password" placeholder="●●●●●●●" v-model="currentPassword">
-        <label for="email">New password</label>
+        <label for="email">{{ $t("newpassword") }}</label>
         <input type="password" placeholder="●●●●●●●" v-model="newPassword" @input="checkPassword()">
-        <label for="email">Repeat new password</label>
+        <label for="email">{{ $t("confirmnewpassword") }}</label>
         <input type="password" placeholder="●●●●●●●" v-model="repeatedNewPassword" @input="checkPassword()">
         <div v-if="isChangePassword" class="userdashboardchangeemail">
-          <button @click="handlePasswordChange()">Save</button>
-          <button @click="isChangePassword=false" id="passwordchangecancel">Cancel</button>
+          <button @click="handlePasswordChange()">{{ $t("save") }}</button>
+          <button @click="isChangePassword=false" id="passwordchangecancel">{{ $t("cancel") }}</button>
         </div>
 
         </div>
@@ -259,7 +282,7 @@ getSubscriptions();
         </div>
     </article>
      <article class="userdashboardsubscriptions">
-            <h2><span class="material-symbols-outlined">stars</span> Subscriptions</h2>
+            <h2><span class="material-symbols-outlined">stars</span> {{ $t("subscriptions") }}</h2>
             <article class="subscriptioncontainer" v-for="subscription in subscriptions">
                 <article class="userdashboardsubscription">
                       <div class="subscriptiontitle">
@@ -268,8 +291,8 @@ getSubscriptions();
                   <p>Active</p>  
                 </div> 
                 <div class="subscriptioncontent">
-                <p>Characters used  • {{ subscription.characters_used}} characters</p>
-                <p><span class="material-symbols-outlined">calendar_month</span> Ends in {{ new Intl.DateTimeFormat("en-us",{month:"short",day:"numeric",year:"numeric"}).format(new Date(subscription.current_period_end))}}</p>
+                <p>{{ $t("charactersused") }}  • {{ subscription.characters_used}} {{ $t("characters") }}</p>
+                <p><span class="material-symbols-outlined">calendar_month</span> {{ $t("end") }} {{ new Intl.DateTimeFormat("en-us",{month:"short",day:"numeric",year:"numeric"}).format(new Date(subscription.current_period_end))}}</p>
                 </div>
                 </article>
                 

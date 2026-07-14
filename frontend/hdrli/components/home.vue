@@ -3,6 +3,7 @@ import { ref,watch,computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useRoute,useRouter } from 'vue-router';
 import { authClient } from '@/auth-client';
+import { useI18n} from 'vue-i18n';
 let route = useRoute();
 let router = useRouter();
 const session = authClient.useSession();
@@ -12,6 +13,7 @@ let isMenu=ref(false);
 let verificationEmailError=ref(null);
 let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
 let verificationEmailSuccess=ref(null);
+const {t,locale}=useI18n({useScope:"global"});
 let handleSignout=async()=>
 {
     try{
@@ -42,6 +44,13 @@ let handleEmailVerification =async ()=>{
     }
 
 }
+let switchLanguage=()=>{
+    if(locale.value=="en"){
+        locale.value="ar";
+    }else if(locale.value=="ar"){
+        locale.value="en";
+    }
+}
 
 
 
@@ -54,17 +63,18 @@ let handleEmailVerification =async ()=>{
         </div>
         <div class="navigationmenulinks">
             <ul>
-        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
-        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
-        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
-        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>Account</li></routerLink>
+        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>{{ $t("home") }}</li></routerLink>
+        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>{{ $t("pricing") }}</li></routerLink>
+        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>{{ $t("texttospeech") }}</li></routerLink>
+        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>{{ $t("account") }}</li></routerLink>
 
             </ul>
-
+        
+       
         </div>
         <div class="navmenubtn">
-<button v-show="!session.data" @click="$router.push('/login')">Sign in</button>
-        <button v-show="session.data" @click="handleSignout()">Sign out</button>
+<button v-show="!session.data" @click="$router.push('/login')">{{$t("login")}}</button>
+        <button v-show="session.data" @click="handleSignout()">{{ $t("signout") }}</button>
         </div>
         
 
@@ -78,19 +88,32 @@ let handleEmailVerification =async ()=>{
     </div>
     
     <ul>
-        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
-        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
-        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
+        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>{{ $t("home") }}</li></routerLink>
+        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>{{ $t("pricing") }}</li></routerLink>
+        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>{{ $t("texttospeech") }}</li></routerLink>
+
     </ul>
+    
+
+    
+
+
+
     <div class="navbtn" v-show="!session.data">
-    <button @click="$router.push('/login')">Login</button>
-    <button @click="$router.push('/sign-up')">Sign up</button>
+    <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
+    <button @click="$router.push('/login')">{{ $t("login") }}</button>
+    <button @click="$router.push('/sign-up')">{{ $t("signup") }}</button>
     </div>
     <div class="navperson" v-show="session.data">
+        <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
         <p @click="$router.push('/account')">{{ name }}</p>
-        <button @click="handleSignout()">Sign out</button>
+        <button @click="handleSignout()">{{ $t("signout") }}</button>
     </div>
-    <span class="material-symbols-outlined" @click="isMenu=true">menu</span>
+    <div class="language">
+        <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
+       <span class="material-symbols-outlined" @click="isMenu=true">menu</span> 
+    </div>
+    
     </nav>
     
 </header>
@@ -98,24 +121,22 @@ let handleEmailVerification =async ()=>{
     <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
     <p  style="color: greenyellow;" v-if="verificationEmailSuccess!=null">{{ verificationEmailSuccess }}</p>
     <p style="color:red;" v-else-if="verificationEmailError!=null">{{ verificationEmailError }} </p>
-    <p v-else>Please verify your email address to unlock all features.  <a href="#" @click.prevent="handleEmailVerification()">Resend Verification Link</a></p>
+    <p v-else>{{ $t("emailverificationnotice") }} <a href="#" @click.prevent="handleEmailVerification()">{{ $t("emailverificationlink") }}</a></p>
 
     </article>
     <article class="presentation">
         <div>
-          <h2>Next-Generation AI Voice Generation</h2>
+          <h2>{{$t("landingpagetitle")}}</h2>
         <p>
-            Turn any text into natural, professional-grade audio instantly. 
-            Choose from dozens of hyper-realistic voices across multiple languages, 
-            type your script, and download your audio in seconds.
+           {{$t("langingpagep")}}
         </p>
         <div class="presentationbtn" v-show="!session">
-        <button @click="$router.push('/login')">Sign Up</button>
-        <button @click="$router.push('/pricing')">Pricing</button>
+        <button @click="$router.push('/login')">{{ $t("signup") }}</button>
+        <button @click="$router.push('/pricing')">{{ $t("pricing") }}</button>
         </div>   
         <div class="presentationbtn" v-show="session">
-        <button @click="$router.push('/text-to-speech')">Text to speech</button>
-        <button @click="$router.push('/pricing')">Pricing</button>
+        <button @click="$router.push('/text-to-speech')">{{ $t("texttospeech") }}</button>
+        <button @click="$router.push('/pricing')">{{ $t("pricing") }}</button>
         </div>
         </div>
          <article class="audiovisual">
@@ -123,20 +144,20 @@ let handleEmailVerification =async ()=>{
      </article>
     </article>
      <article class="howitworks">
-        <h2>How It Works in 2 Simple Steps</h2>
+        <h2>{{ $t("langinepagepresentationtitle") }}</h2>
         <div class="howtocontainer">
             <article class="howtocontent">
           <span class="material-symbols-outlined">script</span>
-        <h2>Input Text & Select a Voice</h2>
-        <p>Type or paste your script into our editor. Choose from our diverse library of hyper-realistic, multilingual AI voices and adjust the tone to perfectly match your project.</p>
+        <h2>{{ $t("langinepagefirstcardtitle") }}</h2>
+        <p>{{ $t("langinepagefirstcardp") }}</p>
         <article class="howtocontentprompt">
             <p>"مع هدرلي رجّع أي كتيبة لأوديو احترافي في رمشة عين. خيّر الصوت لي يعجبك، أكتب واش راك حاب، وخلّي الذكاء الاصطناعي يدير خدمتوا"</p>
         </article>
         </article>
         <article class="howtocontent">
           <span class="material-symbols-outlined">wand_stars</span>
-        <h2>Generate & Download</h2>
-        <p>Click generate and let our advanced AI engine process your text in seconds. Preview the audio stream instantly, then download your studio-quality MP3 file ready for use.</p>
+        <h2>{{$t('landingpagesecondcardtitle')}}</h2>
+        <p>{{$t('landingpagesecondcardp')}}</p>
         <div class="howtocontentaudio">
           <av-line  :line-width="2" line-color="lime" src="/ehdrli.mp3"></av-line>      
         </div>
@@ -147,17 +168,17 @@ let handleEmailVerification =async ()=>{
     </article>
     <article class="quote">
     <span class="material-symbols-outlined">format_quote</span>
-    <h2>"We started this project with one simple goal: to remove the friction between a great script and professional audio. Your words deserve to be heard, and you shouldn't need a recording studio to make that happen."</h2>
-    <p>eHdrli ceo</p>
+    <h2>"{{$t('landingpagequote')}}"</h2>
+    <p>{{ $t("landingepagequoter") }}</p>
     </article>
 </main>
  <footer class="footer">
         <h2>eHdrli</h2>
         <div class="footerlinks">
-            <RouterLink to="/privacy"><p :class="{isLink:route.path=='/privacy'}">Privacy</p></RouterLink>
-            <RouterLink to="/terms"><p :class="{isLink:route.path=='/terms'}">Terms</p></RouterLink>
-            <RouterLink to="/pricing"><p :class="{isLink:route.path=='/pricing'}">Pricing</p></RouterLink>
-            <RouterLink to="/text-to-speech"><p :class="{isLink:route.path=='/text-to-speech'}">Text to speech</p></RouterLink>
+            <RouterLink to="/privacy"><p :class="{isLink:route.path=='/privacy'}">{{ $t("privacy") }}</p></RouterLink>
+            <RouterLink to="/terms"><p :class="{isLink:route.path=='/terms'}">{{ $t("terms") }}</p></RouterLink>
+            <RouterLink to="/pricing"><p :class="{isLink:route.path=='/pricing'}">{{ $t("pricing") }}</p></RouterLink>
+            <RouterLink to="/text-to-speech"><p :class="{isLink:route.path=='/text-to-speech'}">{{ $t("texttospeech") }}</p></RouterLink>
         </div>
         <div class="footersocials">
             <a href=""><img src="/instagram.png" alt=""></a>
@@ -166,7 +187,7 @@ let handleEmailVerification =async ()=>{
             <a href=""><img src="/whatsapp.png" alt=""></a>
 
         </div>
-        <p>© 2026 eHdrli. All rights reserved.</p>
+        <p>© {{ $t("rights") }}</p>
     </footer>
 </div>
 </template>

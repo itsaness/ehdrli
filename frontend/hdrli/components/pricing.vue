@@ -2,6 +2,7 @@
 import { authClient } from '@/auth-client';
 import { useRoute,useRouter } from 'vue-router';
 import { ref,computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 let router = useRouter();
 let session = authClient.useSession();
 let name = computed(()=>session?.value.data?.user?.name);
@@ -12,6 +13,8 @@ let email = computed(()=>session.value?.data?.user?.email);
 let verificationEmailError=ref(null);
 let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
 let verificationEmailSuccess=ref(null);
+const {t,locale}=useI18n({useScope:"global"});
+
 
 
 const getPlans = async()=>{
@@ -80,6 +83,13 @@ let handleEmailVerification =async ()=>{
     }
 
 }
+let switchLanguage=()=>{
+    if(locale.value=="en"){
+        locale.value="ar";
+    }else if(locale.value=="ar"){
+        locale.value="en";
+    }
+}
 getPlans();
 
 
@@ -87,104 +97,121 @@ getPlans();
 <template>
     <div class="navigationmenu" v-show="isMenu">
         <div class="navigationmenutitle">
-             <h2>eHdlri</h2>
+            <h2>eHdrli</h2>
              <span class="material-symbols-outlined" @click="isMenu=false">close_small</span>
         </div>
         <div class="navigationmenulinks">
             <ul>
-        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
-        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
-        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
-        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>Account</li></routerLink>
+        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>{{ $t("home") }}</li></routerLink>
+        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>{{ $t("pricing") }}</li></routerLink>
+        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>{{ $t("texttospeech") }}</li></routerLink>
+        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>{{ $t("account") }}</li></routerLink>
 
             </ul>
-
-        </div>
-         <div class="navmenubtn">
-<button v-show="!session.data" @click="$router.push('/login')">Sign in</button>
-        <button v-show="session.data" @click="handleSignout()">Sign out</button>
-        </div>
+        
        
+        </div>
+        <div class="navmenubtn">
+<button v-show="!session.data" @click="$router.push('/login')">{{$t("login")}}</button>
+        <button v-show="session.data" @click="handleSignout()">{{ $t("signout") }}</button>
+        </div>
+        
 
 
     </div>
-    <div class="maincontainer">
-    <header>
+<div class="maincontainer">
+<header>
     <nav class="nav">
+    <div class="navlogo">
     <routerLink to="/"><h2>eHdrli</h2></routerLink> 
+    </div>
+    
     <ul>
-        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
-        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
-        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
+        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>{{ $t("home") }}</li></routerLink>
+        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>{{ $t("pricing") }}</li></routerLink>
+        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>{{ $t("texttospeech") }}</li></routerLink>
+
     </ul>
+    
+
+    
+
+
+
     <div class="navbtn" v-show="!session.data">
-    <button @click="$router.push('/login')">Login</button>
-    <button @click="$router.push('/sign-up')">Sign up</button>
+    <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
+    <button @click="$router.push('/login')">{{ $t("login") }}</button>
+    <button @click="$router.push('/sign-up')">{{ $t("signup") }}</button>
     </div>
     <div class="navperson" v-show="session.data">
+        <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
         <p @click="$router.push('/account')">{{ name }}</p>
-        <button @click="handleSignout()">Sign out</button>
+        <button @click="handleSignout()">{{ $t("signout") }}</button>
     </div>
-    <span class="material-symbols-outlined" @click="isMenu=true">menu</span>
+    <div class="language">
+        <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
+       <span class="material-symbols-outlined" @click="isMenu=true">menu</span> 
+    </div>
+    
     </nav>
     
 </header>
 <main>
-   <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
-    <p  style="color: green;" v-if="verificationEmailSuccess!=null">{{ verificationEmailSuccess }}</p>
-    <p style="color:red" v-else-if="verificationEmailError!=null">{{ verificationEmailError }} </p>
-    <p v-else>Please verify your email address to unlock all features.  <a href="#" @click.prevent="handleEmailVerification()">Resend Verification Link</a></p>
+    <article v-show="session.data&&!isEmailVerified" class="emailverificationnotice">
+    <p  style="color: greenyellow;" v-if="verificationEmailSuccess!=null">{{ verificationEmailSuccess }}</p>
+    <p style="color:red;" v-else-if="verificationEmailError!=null">{{ verificationEmailError }} </p>
+    <p v-else>{{ $t("emailverificationnotice") }} <a href="#" @click.prevent="handleEmailVerification()">{{ $t("emailverificationlink") }}</a></p>
 
     </article>
     <article class="pricingpresentation">
-        <h2>Simple pricing that scales with your needs</h2>
-        <p>Start generating lifelike audio immediately and upgrade only when you need more power. We believe in straightforward, transparent pricing with no hidden fees—just choose the character limit that fits your monthly production, whether you are a solo creator or a growing business.</p>
+        <h2>{{ $t("pricingtitle") }}</h2>
+        <p>{{ $t("pricingp") }}</p>
 
     </article>
     <article class="plans">
         <article class="plan1">
             <h2>Plus</h2>
             <p><h2>{{plans[1]?.price}}</h2> <b>DA</b></p>
-            <p>Essential voices and limits for your daily audio needs</p>
+            <p>{{ $t("pricingfirstcard") }}</p>
             <ul>
                 <li><img src="/check.png" alt="">
-                <p>Text To Speech Access</p></li>
+                <p>{{ $t("pricingadvantageone") }}</p></li>
                 <li><img src="/check.png" alt="">
-                <p>Ai Franco-darija to Arabic-darija</p></li>
+                <p>{{ $t("pricingadvantagetwo") }}</p></li>
                 <li> <img src="/check.png" alt="">
-                <p>{{ plans[1]?.character_limit }} Characters</p></li>
+                <p>{{ plans[1]?.character_limit }} {{ $t("pricingadvantagethree") }}</p></li>
                
            </ul>
-           <button @click="handleCheckout(plans[1]?.id)">Get Started</button>
+           <button @click="handleCheckout(plans[1]?.id)">{{ $t("pricingfirstbutton") }}</button>
 
         </article>
         <article class="plan2">
             <h2 id="proplan">Pro</h2>
             <p><h2>{{ plans[0]?.price }}</h2><b>DA</b> </p>
-            <p>Maximum limits and priority generation for heavy users.</p>
+            <p>{{ $t("pricingsecondcard") }}</p>
             <ul>
                 <li><img src="/check.png" alt="">
-                <p>Text To Speech Access</p></li>
+                <p>{{ $t("pricingadvantageone") }}</p></li>
                 <li><img src="/check.png" alt="">
-                <p>Ai Franco-darija to Arabic-darija</p></li>
+                <p>{{ $t("pricingadvantagetwo") }}</p></li>
                 <li> <img src="/check.png" alt="">
-                <p>{{ plans[0]?.character_limit }} Characters</p></li>
+                <p>{{ plans[0]?.character_limit }} {{ $t("pricingadvantagethree") }}</p></li>
                
            </ul>
-           <button id="plansjoinnowbtn" @click="handleCheckout(plans[0]?.id)">Join Now</button>
+           <button id="plansjoinnowbtn" @click="handleCheckout(plans[0]?.id)">{{ $t("pricingsecondbutton") }}</button>
 
         </article>
         
     </article>
     <article class="faq">
-        <h2>Common Questions</h2>
+        <h2>{{ $t("questiontitle") }}</h2>
         <article class="question">
-            <p><strong>Can I get more characters if I run out before the month ends?</strong> </p>
-            <p>Yes! If you run low on credits, you don't have to wait for your next billing cycle. You can simply purchase another plan at any time. Thanks to our credit-stacking system, your new characters are added instantly, and you will never lose any unused characters from your previous plan until their original expiration date.</p>
+            <p><strong>{{ $t("questionfirsttitle") }}</strong> </p>
+            <p>{{ $t("questionfirstp") }}</p>
         </article>
          <article class="question">
-            <p><strong>Whenever people buy AI voice generation, their #1 concern is whether they will get copyright strikes on YouTube or if they can use it for client work?</strong> </p>
-            <p>Absolutely. Any audio you generate and download using our Plus or Pro plans is fully cleared for commercial use. You can monetize the voices on YouTube, use them in podcasts, video games, advertisements, or client projects without paying any extra royalties.</p>
+            <p><strong>{{ $t("questionsecondtitle") }}</strong> </p>
+            <p>{{ $t("questionsecondp") }}</p>
         </article>
 
     </article>
@@ -193,12 +220,19 @@ getPlans();
 <footer class="footer">
         <h2>eHdrli</h2>
         <div class="footerlinks">
-            <RouterLink to="/privacy"><p :class="{isLink:route.path=='/privacy'}">Privacy</p></RouterLink>
-            <RouterLink to="/terms"><p :class="{isLink:route.path=='/terms'}">Terms</p></RouterLink>
-            <RouterLink to="/pricing"><p :class="{isLink:route.path=='/pricing'}">Pricing</p></RouterLink>
-            <RouterLink to="/text-to-speech"><p :class="{isLink:route.path=='/text-to-speech'}">Text to speech</p></RouterLink>
+            <RouterLink to="/privacy"><p :class="{isLink:route.path=='/privacy'}">{{ $t("privacy") }}</p></RouterLink>
+            <RouterLink to="/terms"><p :class="{isLink:route.path=='/terms'}">{{ $t("terms") }}</p></RouterLink>
+            <RouterLink to="/pricing"><p :class="{isLink:route.path=='/pricing'}">{{ $t("pricing") }}</p></RouterLink>
+            <RouterLink to="/text-to-speech"><p :class="{isLink:route.path=='/text-to-speech'}">{{ $t("texttospeech") }}</p></RouterLink>
         </div>
-        <p>© 2026 eHdrli. All rights reserved.</p>
+        <div class="footersocials">
+            <a href=""><img src="/instagram.png" alt=""></a>
+            <a href=""><img src="/facebook.png" alt=""></a>
+            <a href=""><img src="/twitter.png" alt=""></a>
+            <a href=""><img src="/whatsapp.png" alt=""></a>
+
+        </div>
+        <p>© {{ $t("rights") }}</p>
     </footer>
     </div>
    

@@ -2,6 +2,7 @@
 import { ref,computed } from 'vue';
 import { useRoute,useRouter } from 'vue-router';
 import { authClient } from '@/auth-client';
+import { useI18n } from 'vue-i18n';
 let route = useRoute();
 let router = useRouter();
 const session =  authClient.useSession();
@@ -10,6 +11,7 @@ let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
 let verificationEmailError=ref(null);
 let verificationEmailSuccess=ref(null);
 let isMenu=ref(false);
+const {t,locale}=useI18n({useScope:"global"});
 let handleEmailVerification =async ()=>{
     verificationEmailError.value=null;
     verificationEmailSuccess.value=null;
@@ -28,26 +30,46 @@ let handleEmailVerification =async ()=>{
     }
 
 }
+let handleSignout=async()=>
+{
+    try{
+        const {error} = await authClient.signOut();
+        if(error){
+            return;
+        }
+        window.location.reload();
+    }catch(err){
+        console.error(err.message);
+    }
+}
+let switchLanguage=()=>{
+    if(locale.value=="en"){
+        locale.value="ar";
+    }else if(locale.value=="ar"){
+        locale.value="en";
+    }
+}
 </script>
 <template>
-    <div class="navigationmenu" v-show="isMenu">
+     <div class="navigationmenu" v-show="isMenu">
         <div class="navigationmenutitle">
             <h2>eHdrli</h2>
              <span class="material-symbols-outlined" @click="isMenu=false">close_small</span>
         </div>
         <div class="navigationmenulinks">
             <ul>
-        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
-        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
-        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
-        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>Account</li></routerLink>
+        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>{{ $t("home") }}</li></routerLink>
+        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>{{ $t("pricing") }}</li></routerLink>
+        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>{{ $t("texttospeech") }}</li></routerLink>
+        <routerLink to="/account" :class="{isLink:route.path=='/account'}"><li>{{ $t("account") }}</li></routerLink>
 
             </ul>
-
+        
+       
         </div>
         <div class="navmenubtn">
-<button v-show="!session.data" @click="$router.push('/login')">Sign in</button>
-        <button v-show="session.data" @click="handleSignout()">Sign out</button>
+<button v-show="!session.data" @click="$router.push('/login')">{{$t("login")}}</button>
+        <button v-show="session.data" @click="handleSignout()">{{ $t("signout") }}</button>
         </div>
         
 
@@ -56,23 +78,36 @@ let handleEmailVerification =async ()=>{
     <header>
     <nav class="nav">
     <div class="navlogo">
-    <routerLink to="/"><h2>  eHdrli</h2></routerLink> 
+    <routerLink to="/"><h2>eHdrli</h2></routerLink> 
     </div>
     
     <ul>
-        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>Home</li></routerLink>
-        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>Pricing</li></routerLink>
-        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>Text to speech</li></routerLink>
+        <routerLink to="/" :class="{isLink:route.path=='/'}"><li>{{ $t("home") }}</li></routerLink>
+        <routerLink to="/pricing" :class="{isLink:route.path=='/pricing'}"><li>{{ $t("pricing") }}</li></routerLink>
+        <routerLink to="/text-to-speech" :class="{isLink:route.path=='/text-to-speech'}"><li>{{ $t("texttospeech") }}</li></routerLink>
+
     </ul>
+    
+
+    
+
+
+
     <div class="navbtn" v-show="!session.data">
-    <button @click="$router.push('/login')">Login</button>
-    <button @click="$router.push('/sign-up')">Sign up</button>
+    <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
+    <button @click="$router.push('/login')">{{ $t("login") }}</button>
+    <button @click="$router.push('/sign-up')">{{ $t("signup") }}</button>
     </div>
     <div class="navperson" v-show="session.data">
+        <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
         <p @click="$router.push('/account')">{{ name }}</p>
-        <button @click="handleSignout()">Sign out</button>
+        <button @click="handleSignout()">{{ $t("signout") }}</button>
     </div>
-    <span class="material-symbols-outlined" @click="isMenu=true">menu</span>
+    <div class="language">
+        <span @click="switchLanguage()"><img src="/language.png" alt="" ></span>
+       <span class="material-symbols-outlined" @click="isMenu=true">menu</span> 
+    </div>
+    
     </nav>
     
 </header>
@@ -154,6 +189,74 @@ Any dispute, controversy, or claim arising out of or relating to these Terms, or
         
        
     </article>
+        <article class="terms" dir="rtl">
+        <h2>شروط الخدمة لـ eHdrli</h2>
+        <p><b>تاريخ السريان:</b> 5 يوليو 2026</p>
+        <p><b>المنصة: eHdrli (يُشار إليها بـ "المنصة" أو "الخدمة" أو "نحن" أو "لنا")</b></p>
+        <p>مرحباً بك في eHdrli. تحكم شروط الخدمة هذه ("الشروط") وصولك إلى واستخدامك لموقع eHdrli الإلكتروني وتطبيقاته وخدمات تحويل النص إلى كلام (TTS) واستنساخ الأصوات بالذكاء الاصطناعي.
+           بتسجيل حساب أو شراء اشتراك أو استخدام خدماتنا، فإنك توافق على الالتزام بهذه الشروط. إذا كنت لا توافق على هذه الشروط، يجب عليك عدم استخدام خدماتنا.</p>
+        <ol>
+            <li>وصف الخدمة</li>
+            <p>eHdrli هي منصة ذكاء اصطناعي تتيح للمستخدمين توليد الصوت من النص، واستنساخ الأصوات، واستخدام الأصوات الاصطناعية في تطبيقات متنوعة. يتحدد الناتج الذي تولده eHdrli بناءً على النصوص التوجيهية والعينات الصوتية التي يقدمها المستخدم.</p>
+            <li>المدفوعات وسياسة عدم الاسترداد الصارمة</li>
+            <ul>
+                <li><b>2.1 البضائع الرقمية:</b></li>
+                <p>بشراء اشتراك أو حزمة رصيد على eHdrli، فإنك تُقر بأنك تشتري وصولاً فورياً إلى سلع رقمية غير ملموسة وقدرة معالجة حسابية.</p>
+                <li><b>2.2 سياسة عدم الاسترداد:</b></li>
+                <p><b>جميع المبيعات نهائية. تطبق eHdrli سياسة صارمة لعدم الاسترداد.</b> بمجرد معالجة الدفع وإضافة الرصيد أو الأحرف إلى حسابك، لا يمكننا تقديم استرداد أو استرداد نسبي أو رصيد مقابل أي أحرف غير مستخدمة أو اشتراكات ملغاة أو عدم الرضا عن الصوت المولّد.</p>
+                <li>2.3 حظر الحسابات:</li>
+                <p>إذا تم تعليق حسابك أو إنهاؤه بسبب انتهاك هذه الشروط (مثل توليد محتوى غير قانوني أو استنساخ الأصوات بدون إذن)، فإنك تفقد أي رصيد متبقٍ ولن يتم استرداده.</p>
+            </ul>
+            <li>الاستخدام المقبول والأخلاقيات</li>
+            <p>أنت المسؤول الوحيد عن النص الذي تدخله والصوت الذي تولده باستخدام eHdrli. باستخدام خدماتنا، فإنك توافق على الالتزام الصارم بالقواعد التالية:</p>
+            <ul>
+                <li><b>3.1 الموافقة على استنساخ الأصوات:</b></li>
+                <p>يجب أن تمتلك موافقة صريحة وصالحة قانونياً من الشخص الذي تقوم باستنساخ صوته. لا يجوز لك استنساخ أصوات السياسيين أو الشخصيات العامة أو المشاهير أو أي مواطن خاص دون إذن خطي منهم.</p>
+                <li><b>3.2 المحتوى المحظور:</b></li>
+                <p>لا يجوز لك استخدام eHdrli لتوليد صوت:</p>
+                <ul>
+                    <li>احتيالي أو مضلل أو مخصص للاحتيال (مثل التصيد الاحتيالي بالتزييف العميق).</li>
+                    <li>تشهيري أو مسيء لسمعة شخص ما.</li>
+                    <li>ينتهك قانون العقوبات الجزائري أو قوانين الجرائم الإلكترونية.</li>
+                    <li>يحرض على العنف أو الكراهية أو العنصرية أو التمييز.</li>
+                </ul>
+                <li><b>3.3 حقوق المنصة:</b></li>
+                <p>نحتفظ بالحق في مراقبة المحتوى المولّد باستخدام أنظمة آلية لضمان الامتثال. ونحتفظ بالحق في إنهاء الحسابات التي تنتهك هذه القواعد فوراً.</p>
+            </ul>
+            <li>الملكية الفكرية</li>
+            <ul>
+                <li><b>4.1 مدخلاتك ومخرجاتك:</b></li>
+                <p>تحتفظ بملكية النص الأصلي الذي تقدمه إلى eHdrli. مع التزامك بهذه الشروط، تمنحك eHdrli ترخيصاً تجارياً لاستخدام الملفات الصوتية التي تولدها باستخدام رصيدك المشترى.</p>
+                <li><b>4.2 تقنيتنا:</b></li>
+                <p>تحتفظ eHdrli بجميع حقوق الملكية الفكرية للمنصة ونماذج الذكاء الاصطناعي الأساسية وتصميم الموقع وهويتنا التجارية. لا يجوز لك إجراء هندسة عكسية أو تفكيك أو محاولة استخراج كودنا المصدري.</p>
+            </ul>
+            <li>خصوصية البيانات والقانون الجزائري (القانون رقم 18-07)</li>
+            <p>خصوصيتك مهمة بالنسبة لنا. تمتثل eHdrli لقوانين جمهورية الجزائر الديمقراطية الشعبية، وتحديداً القانون رقم 18-07 المؤرخ في 10 يونيو 2018، المتعلق بحماية الأشخاص الطبيعيين في معالجة البيانات الشخصية.</p>
+            <ul>
+                <li><b>5.1 جمع البيانات:</b></li>
+                <p>نجمع البيانات الضرورية (البريد الإلكتروني ومعلومات الدفع والعينات الصوتية المرفوعة) حصراً لتقديم الخدمة.</p>
+                <li><b>5.2 بيانات الصوت:</b></li>
+                <p>تُعالَج العينات الصوتية المرفوعة للاستنساخ بشكل آمن ولا تُستخدم أبداً لتدريب نماذجنا الأساسية دون موافقتك الصريحة.</p>
+                <li><b>5.3 حقوق المستخدم:</b></li>
+                <p>بموجب القانون 18-07، يحق لك الوصول إلى بياناتك الشخصية أو تصحيحها أو طلب حذفها عن طريق التواصل مع فريق الدعم.</p>
+            </ul>
+            <li>إخلاء المسؤولية عن الضمانات</li>
+            <p>تُقدَّم eHdrli على أساس "كما هي" و"كما هو متاح". لا نضمن أن الخدمة ستكون دون انقطاع أو خالية من الأخطاء، أو أن الصوت المولّد سيلبي توقعاتك الذاتية المحددة. نتبرأ من جميع الضمانات، الصريحة منها والضمنية.</p>
+            <li>تحديد المسؤولية</li>
+            <p>إلى أقصى حد يسمح به القانون الجزائري، لن تكون eHdrli ومؤسسوها وشركاؤها مسؤولين عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية ناتجة عن:</p>
+            <ol>
+                <li>استخدامك للخدمة أو عدم قدرتك على استخدامها.</li>
+                <li>أي وصول غير مصرح به إلى حسابك.</li>
+                <li>أي مطالبات قانونية مقدمة ضدك من أطراف ثالثة بسبب الصوت الذي ولّدته باستخدام منصتنا.</li>
+            </ol>
+            <li>القانون الحاكم والاختصاص القضائي</li>
+            <p>تخضع هذه الشروط وتُفسَّر وفقاً لقوانين جمهورية الجزائر الديمقراطية الشعبية. أي نزاع أو خلاف أو مطالبة ناشئة عن هذه الشروط أو المتعلقة بها، أو عن إخلالها أو إنهائها أو بطلانها، تخضع للاختصاص القضائي الحصري للمحاكم المختصة.</p>
+            <li>التعديلات على الشروط</li>
+            <p>نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سنُخطر المستخدمين بالتغييرات الجوهرية عبر البريد الإلكتروني أو تنبيه على المنصة. استمرار استخدام eHdrli بعد نشر التغييرات يُعدّ قبولاً منك للشروط المعدّلة.</p>
+        </ol>
+    <p><b>تواصل معنا:</b> إذا كان لديك أي أسئلة حول هذه الشروط، يرجى التواصل معنا على: support@ehdrli.com</p>
+    </article>
+
 </main>
 <footer class="footer">
         <h2>eHdrli</h2>

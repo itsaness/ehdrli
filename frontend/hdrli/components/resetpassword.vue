@@ -9,6 +9,8 @@ let route=useRoute();
 let router=useRouter();
 let isLoading=ref();
 let passwordSuccess=ref(null);
+import { useI18n } from 'vue-i18n';
+const {t}=useI18n();
 const token = route.query.token;
 let checkPassword=()=>{
     if(newPassword.value.length<8 || !newPassword.value){
@@ -57,22 +59,22 @@ let handlePasswordReset=async()=>{
         <h2>eHdrli</h2>
         <hr>
         <article class="changepasswordhero">
-             <h2>Create New Password</h2> 
+             <h2>{{ $t("resetpasswordtitle") }}</h2> 
              <p style="color:red" v-if="passwordError!=null">{{ passwordError }}</p>
                 <form action="" class="changepasswordform" @submit.prevent="handlePasswordReset()">
-                <label for="password">New Password</label>
+                <label for="password">{{ $t("newpassword") }}</label>
                 <div class="changepasswordinput">
                   <span class="material-symbols-outlined">lock</span>
                   <input type="password" placeholder="••••••••" name="password" v-model="newPassword" @input="checkPassword()"    required>  
                 </div>
-                <label for="newpassword">Confirm New Password</label>
+                <label for="newpassword">{{ $t("confirmnewpassword") }}</label>
                 
                 <div class="changepasswordinput">
                <span class="material-symbols-outlined">lock</span>
                <input type="password" placeholder="••••••••" name="newpassword" v-model="repeatedPassword" @input="checkPassword()" required>
                 </div>
-                <button type="submit" :disabled="passwordError!=null">Set New Password</button>
-                <RouterLink to="/login"><span class="material-symbols-outlined">arrow_left_alt</span> Back to Sign in</RouterLink>
+                <button type="submit" :disabled="passwordError!=null">{{ $t("setnewpassword") }}</button>
+                <RouterLink to="/login"><span class="material-symbols-outlined">arrow_left_alt</span> {{ $t("back") }}</RouterLink>
                 </form>
         </article>
    

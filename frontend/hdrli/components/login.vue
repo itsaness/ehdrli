@@ -2,11 +2,13 @@
 import { authClient } from '@/auth-client';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 let email=ref();
 let password=ref();
 let isLoading=ref();
 let loginError=ref(null);
 let router=useRouter();
+const {t}=useI18n();
 let handleLogin = async()=>{
     if(isLoading.value){
         return;
@@ -60,28 +62,28 @@ let handleSocialSignUp=async()=>{
         <div class="loginpresentation">
       <article class="logintitle">
         <h2>Join eHdrli</h2>
-        <p>Welcome back log in to your account to continue generating lifelike audio.</p>
+        <p>{{ $t("logintitle") }}</p>
       </article>
       <article class="loginformcontainer">
         <form action="" class="loginform" @submit.prevent="handleLogin()">
         <p v-if="loginError!=null" style="color:red">{{ loginError }}</p>
-           <label for="email">Email address</label>
+           <label for="email">{{ $t("email") }}</label>
            <div class="inputfield">
                 <span class="material-symbols-outlined">mail</span>
                 <input type="text" name="email"  placeholder="hello@example.com" v-model="email" required>
             </div> 
             <div class="passwordlabel">
-               <label for="password">Password</label> 
-               <a href="/forgot-password">Forgot password ?</a>
+               <label for="password">{{ $t("password") }}</label> 
+               <a href="/forgot-password">{{ $t("forgotpassword") }}</a>
             </div>
             <div class="inputfield">
                 <span class="material-symbols-outlined">lock</span>
             <input type="password" name="password" placeholder="••••••••" v-model="password" required>
             </div>
-            <button type="submit">Sign in <span class="material-symbols-outlined">arrow_forward</span></button>
-            <p>OR CONTINUE WITH</p>
+            <button type="submit">{{ $t("signinbtn") }} <span class="material-symbols-outlined">arrow_forward</span></button>
+            <p>{{ $t("continuewith") }}</p>
             <button type="button" @click="handleSocialSignUp()"><img src="../public//google.png" alt="">Google</button>
-            <p>Don't have an account ? <routerLink to="/sign-up">Sign up</routerLink></p>
+            <p>{{ $t("noaccount") }} <routerLink to="/sign-up">{{ $t("signup") }}</routerLink></p>
     
        
         </form>
@@ -90,7 +92,7 @@ let handleSocialSignUp=async()=>{
 
       </article>
        <footer class="loginfooter">
-     <p>By authenticating, you agree to our <a href="">Terms</a> and <a href="">Privacy Policy.</a></p>
+     <p>{{ $t("agree") }} <a href="/terms"> {{ $t("terms") }}</a> {{ $t("and") }}<a href="/privacy">{{ $t("privacy") }}</a></p>
     </footer>
         </div>
         
