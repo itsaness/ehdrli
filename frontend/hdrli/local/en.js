@@ -47,7 +47,7 @@ const english = {
         characters:"characters",
         scriptbutton:"Generate Speech",
         selectvoices:"Select Voices",        
-        download:"تحميل",
+        download:"download",
         /* login */
         logintitle:"Create your account join us today and start transforming your text into studio-quality voiceovers.",
         fullname:"Full Name",
