@@ -1,5 +1,5 @@
 <script setup>
-import { ref,watch,computed } from 'vue';
+import { ref,watch,computed,onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useRoute,useRouter } from 'vue-router';
 import { authClient } from '@/auth-client';
@@ -51,6 +51,8 @@ let switchLanguage=()=>{
         locale.value="en";
     }
 }
+
+
 
 
 
