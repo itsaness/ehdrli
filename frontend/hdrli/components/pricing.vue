@@ -232,7 +232,7 @@ getPlans();
             <a href="https://wa.me/message/W4NC7XUGTV5NF1"><img src="/whatsapp.png" alt=""></a>
 
         </div>
-        <p>© {{ $t("rights") }}</p>
+        <p>{{ $t("rights") }}</p>
     </footer>
     </div>
    
