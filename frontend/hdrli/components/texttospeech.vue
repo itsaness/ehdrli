@@ -6,7 +6,7 @@ import { useMediaQuery } from '@vueuse/core';
 import { useLoading } from 'vue-loading-overlay';
 import  VueToggles  from "vue-toggles";
 import { useI18n } from 'vue-i18n';
-let characters = ref([]);
+let characters = ref({});
 let route = useRoute();
 let script = ref("");
 const session = authClient.useSession();
@@ -95,6 +95,7 @@ let generateAudio = async()=>{
     let data = await response.blob();
   
     audioResult.value=URL.createObjectURL(data);
+    await getCharacters();
     
     }catch(err){
         console.error(err.message);
@@ -157,9 +158,11 @@ watch(isLargeScreen,(isLarge)=>{
         isExitVoices.value=true;
     }
 },{immediate:true});
-
+const balance = computed(()=>characters.value?.remaining||0);
 getCharacters();
 getVoices();
+
+
 </script>
 <template>
    <div class="navigationmenu" v-show="isMenu">
@@ -231,7 +234,7 @@ getVoices();
 
     </article>
         <article class="balance">
-            <span id="chars" class="material-symbols-outlined">mode_heat</span><p>{{ $t("balance") }}:<span id="chars"><b>{{characters.remaining}}</b> {{ $t("chars") }}</span></p>
+            <span id="chars" class="material-symbols-outlined">mode_heat</span><p>{{ $t("balance") }}:<span id="chars"><b>{{ balance }}</b> {{ $t("chars") }}</span></p>
        </article>
         <div class="texttospeechcontainer">
             <div class="texttospeechparent">
@@ -244,11 +247,6 @@ getVoices();
       </article>
       <article class="prompt">
         <p>{{ $t("whattosay") }}</p>
-        <div class="promptdarijasetting">
-         <p>{{ $t("isscript") }}</p>
-         <VueToggles v-model="isLatinDarija" />
-
-        </div>
         <textarea :placeholder="$t('typescript')" v-model="script" :maxlength="5000"></textarea>
         <div class="promptresult" v-if="audioResult">
         <audio class="audioresult"  :src="audioResult" controls></audio>
