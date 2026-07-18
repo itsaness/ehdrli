@@ -208,7 +208,7 @@ getPlans();
                 <li><img src="/check.png" alt="">
                 <p>{{ $t("pricingadvantagetwo") }}</p></li>
                 <li> <img src="/check.png" alt="">
-                <p>{{ plans[1]?.character_limit }} {{ $t("pricingadvantagethree") }}</p></li>
+                <p>{{ proPlan.character_limit}} {{ $t("pricingadvantagethree") }}</p></li>
                
            </ul>
            <button id="plansjoinnowbtn" @click="handleCheckout(proPlan.id)">{{ $t("pricingsecondbutton") }}</button>
