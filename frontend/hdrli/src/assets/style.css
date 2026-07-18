@@ -283,10 +283,22 @@ footer{
     align-items: center;
     gap: 10px;
 }
+.plansdiscount{
+    display: flex;
+    justify-content:flex-end;
+}
+.plansdiscount p{
+    color:#263500;
+    background-color: #A7C957;
+    padding:5px 10px;
+    border-radius:16px;
+}
+
 .plan1 p,.plan2 p{
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    
 }
 .plan1{
     display: flex;
@@ -1121,7 +1133,7 @@ footer{
         display: flex;
         flex-direction:row;
         justify-content: center;
-    }
+    
     .question{
         width: 50vw;
         margin: 0 auto;

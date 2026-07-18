@@ -29,7 +29,7 @@ const arabic = {
     pricingfirstcard: "أصوات أساسية وحدود تلبي احتياجاتك الصوتية اليومية",
     pricingsecondcard: "حدود قصوى وأولوية في التوليد للمستخدمين المكثفين.",
     pricingadvantageone: "الوصول إلى ميزة تحويل النص إلى صوت",
-    pricingadvantagetwo: "تحويل الفرانكو-دارجة إلى دارجة عربية بالذكاء الاصطناعي",
+    pricingadvantagetwo: "الوصول إلى مكتبة الأصوات",
     pricingadvantagethree: "حرف",
     pricingfirstbutton: "ابدأ الآن",
     pricingsecondbutton: "انضم الآن",

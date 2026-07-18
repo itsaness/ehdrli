@@ -29,7 +29,7 @@ const english = {
         pricingfirstcard:"Essential voices and limits for your daily audio needs",
         pricingsecondcard:"Maximum limits and priority generation for heavy users.",
         pricingadvantageone:"Text To Speech Access",
-        pricingadvantagetwo:"Ai Franco-darija to Arabic-darija",
+        pricingadvantagetwo:"Voices Library Access",
         pricingadvantagethree:"Characters",
         pricingfirstbutton:"Get Started",
         pricingsecondbutton:"Join Now",

@@ -170,6 +170,9 @@ getPlans();
     </article>
     <article class="plans">
         <article class="plan1">
+        <div class="plansdiscount">
+            <p>50% OFF</p>
+        </div>
             <h2>Plus</h2>
             <p><h2>{{plans[1]?.price}}</h2> <b>DA</b></p>
             <p>{{ $t("pricingfirstcard") }}</p>
@@ -186,6 +189,9 @@ getPlans();
 
         </article>
         <article class="plan2">
+             <div class="plansdiscount">
+            <p>50% OFF</p>
+            </div>
             <h2 id="proplan">Pro</h2>
             <p><h2>{{ plans[0]?.price }}</h2><b>DA</b> </p>
             <p>{{ $t("pricingsecondcard") }}</p>

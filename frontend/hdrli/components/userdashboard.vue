@@ -26,8 +26,6 @@ let currentPassword=ref();
 let isChangePassword=ref(false);
 let subscriptions =ref([]);
 const {t,locale}=useI18n({useScope:"global"});
-
-
 let handleEmailVerification =async ()=>{
     verificationEmailError.value=null;
     verificationEmailSuccess.value=null;
