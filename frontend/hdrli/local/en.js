@@ -62,6 +62,7 @@ const english = {
         terms:"Terms",
         and:"and",
         privacy:"Privacy Policy",
+        limitedavailability:"Available for a limited time",
         /* sign up */
         signuptitle:"Create your account join us today and start transforming your text into studio-quality voiceovers.",
         alreadyregistered:"Already registered ?",

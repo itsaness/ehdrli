@@ -626,6 +626,14 @@ footer{
 .isvoice:hover{
     background-color: #91aa83;
 }
+.texttospeechlimited p{
+    display: flex;
+    justify-content: center;
+    color:#263500;
+    background-color: #A7C957;
+    padding:5px 10px;
+    border-radius:16px;
+}
 /* forgot password */
  .resetpasswordmain{
     display: flex;

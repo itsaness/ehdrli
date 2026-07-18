@@ -274,6 +274,9 @@ getVoices();
           <h2>{{ $t("selectvoices") }}</h2>
         <span class="material-symbols-outlined" @click="isExitVoices=false">close</span>  
         </div>
+        <div class="texttospeechlimited">
+        <p>{{$t("limitedavailability")}}</p>
+       </div>
         <div class="selectedvoice"  v-for="(voice,index) in voices"  @click="playVoices(voice.previewUrl),selectVoice(voice.voiceId,index)" :class="{isvoice:voice.voiceId==selectedVoiceId}" :key="index" >
         <div>
         <p><b>{{ voice?.name }}</b></p>

@@ -48,6 +48,7 @@ const arabic = {
     scriptbutton: "توليد الصوت",
     selectvoices: "اختر صوتاً",
     download:"تحميل",
+    limitedavailability:"متاح لفترة محدودة",
     /* login */
      logintitle: "أنشئ حسابك وانضم إلينا اليوم وابدأ في تحويل نصوصك إلى تعليقات صوتية بجودة الاستوديو.",
     fullname: "الاسم الكامل",
