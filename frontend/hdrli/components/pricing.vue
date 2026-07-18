@@ -174,27 +174,8 @@ getPlans();
             <p>50% OFF</p>
         </div>
             <h2>Plus</h2>
-            <p><h2>{{plans[1]?.price}}</h2> <b>DA</b></p>
+            <p><h2>{{plans[0]?.price}}</h2> <b>DA</b></p>
             <p>{{ $t("pricingfirstcard") }}</p>
-            <ul>
-                <li><img src="/check.png" alt="">
-                <p>{{ $t("pricingadvantageone") }}</p></li>
-                <li><img src="/check.png" alt="">
-                <p>{{ $t("pricingadvantagetwo") }}</p></li>
-                <li> <img src="/check.png" alt="">
-                <p>{{ plans[1]?.character_limit }} {{ $t("pricingadvantagethree") }}</p></li>
-               
-           </ul>
-           <button @click="handleCheckout(plans[1]?.id)">{{ $t("pricingfirstbutton") }}</button>
-
-        </article>
-        <article class="plan2">
-             <div class="plansdiscount">
-            <p>50% OFF</p>
-            </div>
-            <h2 id="proplan">Pro</h2>
-            <p><h2>{{ plans[0]?.price }}</h2><b>DA</b> </p>
-            <p>{{ $t("pricingsecondcard") }}</p>
             <ul>
                 <li><img src="/check.png" alt="">
                 <p>{{ $t("pricingadvantageone") }}</p></li>
@@ -204,7 +185,26 @@ getPlans();
                 <p>{{ plans[0]?.character_limit }} {{ $t("pricingadvantagethree") }}</p></li>
                
            </ul>
-           <button id="plansjoinnowbtn" @click="handleCheckout(plans[0]?.id)">{{ $t("pricingsecondbutton") }}</button>
+           <button @click="handleCheckout(plans[0]?.id)">{{ $t("pricingfirstbutton") }}</button>
+
+        </article>
+        <article class="plan2">
+             <div class="plansdiscount">
+            <p>50% OFF</p>
+            </div>
+            <h2 id="proplan">Pro</h2>
+            <p><h2>{{ plans[1]?.price }}</h2><b>DA</b> </p>
+            <p>{{ $t("pricingsecondcard") }}</p>
+            <ul>
+                <li><img src="/check.png" alt="">
+                <p>{{ $t("pricingadvantageone") }}</p></li>
+                <li><img src="/check.png" alt="">
+                <p>{{ $t("pricingadvantagetwo") }}</p></li>
+                <li> <img src="/check.png" alt="">
+                <p>{{ plans[1]?.character_limit }} {{ $t("pricingadvantagethree") }}</p></li>
+               
+           </ul>
+           <button id="plansjoinnowbtn" @click="handleCheckout(plans[1]?.id)">{{ $t("pricingsecondbutton") }}</button>
 
         </article>
         
