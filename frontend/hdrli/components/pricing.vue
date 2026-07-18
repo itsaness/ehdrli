@@ -13,7 +13,14 @@ let email = computed(()=>session.value?.data?.user?.email);
 let verificationEmailError=ref(null);
 let isEmailVerified=computed(()=>session.value?.data?.user?.emailVerified);
 let verificationEmailSuccess=ref(null);
+let plusPlan = computed(()=>{
+    return plans.value.find(plan=>plan.name=='Plus')||{};
+})
+let proPlan = computed(()=>{
+    return plans.value.find(plan=>plan.name=='Pro')||{};
+})
 const {t,locale}=useI18n({useScope:"global"});
+
 
 
 
@@ -174,7 +181,7 @@ getPlans();
             <p>50% OFF</p>
         </div>
             <h2>Plus</h2>
-            <p><h2>{{plans[0]?.price}}</h2> <b>DA</b></p>
+            <p><h2>{{plusPlan.price}}</h2> <b>DA</b></p>
             <p>{{ $t("pricingfirstcard") }}</p>
             <ul>
                 <li><img src="/check.png" alt="">
@@ -182,10 +189,10 @@ getPlans();
                 <li><img src="/check.png" alt="">
                 <p>{{ $t("pricingadvantagetwo") }}</p></li>
                 <li> <img src="/check.png" alt="">
-                <p>{{ plans[0]?.character_limit }} {{ $t("pricingadvantagethree") }}</p></li>
+                <p>{{ plusPlan.character_limit}} {{ $t("pricingadvantagethree") }}</p></li>
                
            </ul>
-           <button @click="handleCheckout(plans[0]?.id)">{{ $t("pricingfirstbutton") }}</button>
+           <button @click="handleCheckout(plusPlan.id)">{{ $t("pricingfirstbutton") }}</button>
 
         </article>
         <article class="plan2">
@@ -193,7 +200,7 @@ getPlans();
             <p>50% OFF</p>
             </div>
             <h2 id="proplan">Pro</h2>
-            <p><h2>{{ plans[1]?.price }}</h2><b>DA</b> </p>
+            <p><h2>{{ proPlan.price }}</h2><b>DA</b> </p>
             <p>{{ $t("pricingsecondcard") }}</p>
             <ul>
                 <li><img src="/check.png" alt="">
@@ -204,7 +211,7 @@ getPlans();
                 <p>{{ plans[1]?.character_limit }} {{ $t("pricingadvantagethree") }}</p></li>
                
            </ul>
-           <button id="plansjoinnowbtn" @click="handleCheckout(plans[1]?.id)">{{ $t("pricingsecondbutton") }}</button>
+           <button id="plansjoinnowbtn" @click="handleCheckout(proPlan.id)">{{ $t("pricingsecondbutton") }}</button>
 
         </article>
         

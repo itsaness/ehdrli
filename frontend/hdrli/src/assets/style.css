@@ -1133,7 +1133,7 @@ footer{
         display: flex;
         flex-direction:row;
         justify-content: center;
-    
+    }
     .question{
         width: 50vw;
         margin: 0 auto;
@@ -1251,4 +1251,4 @@ footer{
     
 
    
-}
+    }
