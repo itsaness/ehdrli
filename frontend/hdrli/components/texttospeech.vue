@@ -14,7 +14,7 @@ let name = computed(()=>session?.value.data?.user?.name);
 let audioResult = ref();
 let voices=ref([]);
 let currentAudio=null;
-let selectedVoiceId=ref("aMmeBf0lzDYlouyfqNjh");
+let selectedVoiceId=ref("");
 let selectedVoiceIndex=ref(1);
 let isExitVoices=ref(true);
 let isMenu=ref(false);
@@ -55,6 +55,12 @@ let getVoices= async ()=>{
     }
     let data = await response.json();
     voices.value=data;
+    let voiceStillExists = voices.value.some((v)=>v.voiceId===selectedVoiceId.value);
+    if(!voiceStillExists){
+      selectedVoiceId.value=voices.value[0].voiceId;  
+    }
+    
+    
     
     }catch(err){
         console.error(err.message);
