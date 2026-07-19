@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 
  export const auth = betterAuth({
-  trustedOrigins:["http://localhost:3000","http://localhost:5173","https://api.ehdrli.com","https://ehdrli.com","https://www.ehdrli.com"],
+  trustedOrigins:["http://localhost:3000","http://localhost:5173","http://localhost:3000","https://ehdrli.com","https://www.ehdrli.com"],
   secret:process.env.BETTER_AUTH_SECRET,
   baseURL:process.env.BETTER_AUTH_URL,
   user:{

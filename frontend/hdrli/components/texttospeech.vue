@@ -37,7 +37,7 @@ let getCharacters = async ()=>{
         },
     }
     try{
-    let response = await fetch("https://api.ehdrli.com/api/characters",options);
+    let response = await fetch("http://localhost:3000/api/characters",options);
     if(!response.ok){
         return;
     }
@@ -49,7 +49,7 @@ let getCharacters = async ()=>{
 }
 let getVoices= async ()=>{
     try{
-    let response = await fetch("https://api.ehdrli.com/api/voices");
+    let response = await fetch("http://localhost:3000/api/voices");
     if(!response.ok){
         return;
     }
@@ -94,7 +94,7 @@ let generateAudio = async()=>{
     });
     isLoading.value=true;
     try{
-    let response = await fetch("https://api.ehdrli.com/api/voices",options);
+    let response = await fetch("http://localhost:3000/api/voices",options);
     if(!response.ok){
         return;
     }

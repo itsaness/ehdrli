@@ -26,7 +26,7 @@ const {t,locale}=useI18n({useScope:"global"});
 
 const getPlans = async()=>{
     try{
-        let response = await fetch("https://api.ehdrli.com/api/plans");
+        let response = await fetch("http://localhost:3000/api/plans");
         if(!response.ok){
             return;
         }
@@ -49,7 +49,7 @@ const handleCheckout = async(planId)=>{
       router.push("/login");
     }
     try{
-    let response = await fetch("https://api.ehdrli.com/api/checkout",options);
+    let response = await fetch("http://localhost:3000/api/checkout",options);
     if(!response.ok){
         return;
     }
