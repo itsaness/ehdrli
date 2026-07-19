@@ -23,7 +23,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![project_license][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
 
 
 
@@ -37,7 +37,7 @@
 <h3 align="center">eHdrli</h3>
 
   <p align="center">
-    project_description
+    Next-Generation AI Voice Generation for darija
     <br />
     <a href="https://github.com/itsaness/ehdrli"><strong>Explore the docs »</strong></a>
     <br />
