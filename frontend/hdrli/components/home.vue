@@ -183,10 +183,10 @@ let switchLanguage=()=>{
             <RouterLink to="/text-to-speech"><p :class="{isLink:route.path=='/text-to-speech'}">{{ $t("texttospeech") }}</p></RouterLink>
         </div>
         <div class="footersocials">
-            <a href="https://www.instagram.com/ehdlriofficial/"><img src="/instagram.png" alt=""></a>
-            <a href="https://www.facebook.com/profile.php?id=61592043687803"><img src="/facebook.png" alt=""></a>
-            <a href="https://x.com/ehdrli"><img src="/twitter.png" alt=""></a>
-            <a href="https://wa.me/message/W4NC7XUGTV5NF1"><img src="/whatsapp.png" alt=""></a>
+            <a href=""><img src="/instagram.png" alt=""></a>
+            <a href=""><img src="/facebook.png" alt=""></a>
+            <a href=""><img src="/twitter.png" alt=""></a>
+            <a href=""><img src="/whatsapp.png" alt=""></a>
 
         </div>
         <p>{{ $t("rights") }}</p>
